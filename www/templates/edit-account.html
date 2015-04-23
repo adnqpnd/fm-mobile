@@ -1,0 +1,60 @@
+<div ng-controller="MainCtrl">
+  <div ng-controller="EditAccountCtrl">
+<ion-header-bar align-title="left" class="bar-positive">
+<a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+  <h1 class="title">FM MARKETING </h1>
+</ion-header-bar>
+<ion-content>
+  <div ng-hide="editForm === 1">
+        Username: {{user.username}}
+        <button ng-click="showEditForm(1)">Edit</button>
+    </div>
+    <div ng-show="editForm === 1">
+        Username: <input type="text" ng-model="userEdit.username" value="{{user.username}}">
+        <button ng-click="editUser(userEdit)">Save</button>
+        <button ng-click="showEditForm(0)">Cancel</button>
+    </div>
+
+
+
+    <div ng-hide="editForm === 2">
+        Password
+        <button ng-click="showEditForm(2)">Edit</button>
+    </div>
+    <div ng-show="editForm === 2">
+        <form name="passwordForm" ng-submit="changePassword(password)" novalidate>
+             <div class="alert alert-dismissable alert-danger" ng-show="errorMessage">
+              <button type="button" class="close" ng-click="showErrorMessage(false)">×</button>
+              <strong>Incorrect Current Password</strong>
+             </div> 
+            <div>Current Password: <input type="password" ng-model="password.old_password" required></div>
+            <div>New Password: <input type="password" ng-model="password.new_password" required></div>
+            <div>Retype New Password: <input type="password" ng-model="password.confNew_password" required></div>
+            <button type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
+            <button type="button" ng-click="showEditForm(0)">Cancel</button>
+        </form>
+    </div>
+
+    
+    <div ng-hide="editForm === 3">
+        First Name: {{user.firstname}}
+        <button ng-click="showEditForm(3)">Edit</button>
+    </div>
+    <div ng-show="editForm === 3">
+        First Name: <input type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
+        <button ng-click="editFirstname(userEdit)">Save</button>
+        <button ng-click="showEditForm(0)">Cancel</button>
+    </div>
+
+    <div ng-hide="editForm === 4">
+         Last Name: {{user.lastname}}
+        <button ng-click="showEditForm(4)">Edit</button>
+    </div>
+    <div ng-show="editForm === 4">
+        Last Name: <input type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
+        <button ng-click="editLastname(userEdit)">Save</button>
+        <button ng-click="showEditForm(0)">Cancel</button>
+    </div>
+</ion-content>
+</div>
+<div>
