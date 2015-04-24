@@ -5,15 +5,16 @@
 }
 
 .loginbg{
-  background-image: url("../img/FMbg.png");
+  background-image: url("/img/FMbg.png");
   background-repeat: no-repeat;
   background-position: center center;
   overflow-x: hidden !important;
   margin: 0px 0px 0px 0px !important; 
   background-size: cover;
-  color: white;
+
 }
 
-.transparent-i{
+div.transparent-i{
 	background-color: transparent !important; 
+	border: none !important;
 }
