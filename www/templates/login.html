@@ -1,18 +1,46 @@
+<div class="loginbg responsive-sm responsive-md ">
 
-<div style="background-color: #FFA311; color:#F9FFFF;">
-   <div class="list">
-   	<form name="loginForm" ng-submit="logIn(guest)" novalidate>
-     <label class="item item-input">
-       <span class="input-label">Username</span>
-       <input type="text" ng-model="guest.username" required>
-     </label>
-     <label class="item item-input">
-       <span class="input-label">Password</span>
-       <input type="password" ng-model="guest.password" required>
-     </label>
-        <button ng-disabled="loginForm.$invalid" class="button button-block button-light">
-         Login
-       </button>
-     </form>
-   </div>
+  <!-- header -->
+  <div class="bar bar-header bar-stable">
+    <h1 class="title">LOG IN</h1>
+  </div>
+
+  <!-- body -->
+
+  <div class="row row-bottom">
+
+    <div class="col-bottom ">
+      <h1 style="color:white">FM Marketing</h1>
+    </div>
+
+    <div class="card col-bottom col-50 cardLogin col-offset-25 transparentItem">
+      <div  class="item item-text-swrap transparentItem ">
+       <div class="list transparentItem">
+        <form name="loginForm" ng-submit="logIn(guest)" novalidate>
+         <label class="item item-input">
+           <span class="input-label transparentItem"><i class="icon ion-person"></i>&nbsp; &nbsp; USERNAME</span>
+           <input type="text" ng-model="guest.username" required>
+         </label>
+         <label class="item item-input">
+           <span class="input-label"><i class="icon ion-locked"></i>&nbsp; &nbsp;PASSWORD</span>
+           <input type="password" ng5-model="guest.password" required>
+         </label>
+            <button ng-disabled="loginForm.$invalid" class="button button-block button-light">
+             Login
+           </button>
+         </form>
+       </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- footer -->
+ <!--  <div class="bar bar-footer bar-calm">
+    <div class="title">Footer</div>
+  </div> -->
+
 </div>
+
+

@@ -3,3 +3,20 @@
 .bar.bar-stable {
 	background-color: #FFA311;
 }
+
+.loginbg{
+  background-image: url("../../img/5.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow-x: hidden !important;
+  margin: 0px 0px 0px 0px !important; 
+  background-size: cover;
+}
+
+.transparentItem{
+  background: transparent;
+}
+
+.cardLogin{
+}
+
