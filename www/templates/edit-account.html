@@ -17,7 +17,7 @@
       <!-- username -->
       <div class="item item-text-wrap ">
 
-        <div class="row" ng-hide="editForm === 1">
+        <div class="list row" ng-hide="editForm === 1">
         <label class = "col col-20">Username:</label
             > 
         <div class="col col-60">
@@ -28,11 +28,11 @@
       
         </div>
 
-    <div class="list row" ng-show="editForm === 1">
+        <div class="list row" ng-show="editForm === 1">
        <label class = "col col-20"> Username:</label> 
 
         <div class="col col-60">
-            <input type="text" ng-model="userEdit.username" value="{{user.username}}">
+            <input class="form-control" type="text" ng-model="userEdit.username" value="{{user.username}}">
         </div>
 
         <button class="button button-small button-light" ng-click="editUser(userEdit)">Save</button>&nbsp;
@@ -40,7 +40,7 @@
     </div>
     
     <!-- first name -->
-    <div class="row" ng-hide="editForm === 3">
+    <div class=" list row" ng-hide="editForm === 3">
         <label class = "col col-20">First Name:</label> 
 
          <div class="col col-60">
@@ -50,11 +50,11 @@
         <button class="button button-small button-light" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
-    <div class="row" ng-show="editForm === 3">
+    <div class="list row" ng-show="editForm === 3">
         <label class = "col col-20">First Name: </label>
 
          <div class="col col-60">
-            <input type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
+            <input class="form-control" type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
         </div>
 
         <button class="button button-small button-light" ng-click="editFirstname(userEdit)">Save</button>&nbsp;
@@ -62,7 +62,7 @@
     </div>
 
     <!-- last name -->
-    <div class="row" ng-hide="editForm === 4">
+    <div class=" list row" ng-hide="editForm === 4">
         <label class = "col col-20"> Last Name:</label> 
 
          <div class="col col-60">
@@ -72,12 +72,13 @@
         <button class="button button-small button-light" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
-    <div class="row" ng-show="editForm === 4">
+    <div class=" list row" ng-show="editForm === 4">
         <label class = "col col-20">Last Name: </label>
 
          <div class="col col-60">
-            <input type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
+            <input  class="form-control" type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
         </div>
+
         <button class="button button-small button-light" ng-click="editLastname(userEdit)">Save</button>&nbsp;
         <button class="button button-small button-light" ng-click="showEditForm(0)">Cancel</button>
     </div>
@@ -86,7 +87,7 @@
     <div class="row" ng-hide="editForm === 2">
         <label class = "col col-20">Password: </label>
 
-        <div class="col col-60">
+        <div class="col col-1 col-offset-69">
         </div>
 
 
@@ -95,7 +96,7 @@
       
     </div>
 
-    <div class="row"  ng-show="editForm === 2">
+    <div ng-show="editForm === 2">
          <label class = "col col-20">Password: </label>
         <form name="passwordForm" ng-submit="changePassword(password)" novalidate>
 
@@ -107,25 +108,33 @@
              <br>
 
             <div class="row">
-                <label align="right" class = "col col-30">Current:</label> 
+                <label align="right"  class = "col col-20">Current:</label> 
 
                  <div class="col col-50">
-                    <input type="password" ng-model="password.old_password" required> 
+                    <input class="form-control"  type="password" ng-model="password.old_password" required> 
                 </div>
             </div>
 
             <div class="row">
-                <label align="right" class = "col col-30">New:</label>
-                 <input type="password" ng-model="password.new_password" required>
+                <label align="right" class = "col col-20">New:</label>
+
+                <div  class="col col-50" align="center" >
+                    <input class="form-control"  type="password" ng-model="password.new_password" required>
+                </div>
+                 
              </div>
 
             <div class="row">
-                <label align="right" class = "col col-50">Retype New:</label> 
-                <input type="password" ng-model="password.confNew_password" required>
+                <label align="right" class = "col col-20 col-">Retype New:</label> 
+
+                <div  class="col col-50">
+                <input class="form-control"  type="password" ng-model="password.confNew_password" required>
+            </div>
             </div>
 
-            <div>            
-            <button class="button button-small button-light" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
+            <div align="center"> 
+                 
+            <button class="button button-small button-calm" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
 
             <button class="button button-small button-light" type="button" ng-click="showEditForm(0)">Cancel</button>
             </div>
