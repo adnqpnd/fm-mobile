@@ -1,5 +1,8 @@
 /* Empty. Add your own CSS if you like */
 
+html{
+  font-family: sans-serif;
+}
 .bar.bar-stable {
 	background-color: #FFA311;
 }
