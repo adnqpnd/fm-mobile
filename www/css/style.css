@@ -5,7 +5,7 @@
 }
 
 .loginbg{
-  background-image: url("/img/FMbg.png");
+  background-image: url("../img/FMbg.png");
   background-repeat: no-repeat;
   background-position: center center;
   overflow-x: hidden !important;
