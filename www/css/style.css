@@ -3,3 +3,16 @@
 .bar.bar-stable {
 	background-color: #FFA311;
 }
+
+.loginbg{
+  background-image: url("../../img/FMbg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow-x: hidden !important;
+  margin: 0px 0px 0px 0px !important; 
+  background-size: cover;
+}
+
+.transparent-i{
+	background-color: transparent !important; 
+}

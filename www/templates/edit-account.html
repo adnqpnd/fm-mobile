@@ -1,60 +1,141 @@
+
 <div ng-controller="MainCtrl">
   <div ng-controller="EditAccountCtrl">
+
 <ion-header-bar align-title="left" class="bar-positive">
-<a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
-  <h1 class="title">FM MARKETING </h1>
+    <a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+      <h1 class="title">FM MARKETING</h1>
 </ion-header-bar>
+
 <ion-content>
-  <div ng-hide="editForm === 1">
-        Username: {{user.username}}
-        <button ng-click="showEditForm(1)">Edit</button>
+
+    <div class="card">
+      <div class="item item-divider">
+       <i class="icon ion-edit"></i>&nbsp;Edit Account
+      </div>
+
+      <!-- username -->
+      <div class="item item-text-wrap ">
+
+        <div class="row" ng-hide="editForm === 1">
+        <label class = "col col-20">Username:</label
+            > 
+        <div class="col col-60">
+            {{user.username}}
+         </div>
+       
+            <button class="button button-small button-light" ng-click="showEditForm(1)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+      
+        </div>
+
+    <div class="list row" ng-show="editForm === 1">
+       <label class = "col col-20"> Username:</label> 
+
+        <div class="col col-60">
+            <input type="text" ng-model="userEdit.username" value="{{user.username}}">
+        </div>
+
+        <button class="button button-small button-light" ng-click="editUser(userEdit)">Save</button>&nbsp;
+        <button class="button button-small button-light" ng-click="showEditForm(0)">Cancel</button>
     </div>
-    <div ng-show="editForm === 1">
-        Username: <input type="text" ng-model="userEdit.username" value="{{user.username}}">
-        <button ng-click="editUser(userEdit)">Save</button>
-        <button ng-click="showEditForm(0)">Cancel</button>
+    
+    <!-- first name -->
+    <div class="row" ng-hide="editForm === 3">
+        <label class = "col col-20">First Name:</label> 
+
+         <div class="col col-60">
+            {{user.firstname}}
+        </div>
+
+        <button class="button button-small button-light" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
+    <div class="row" ng-show="editForm === 3">
+        <label class = "col col-20">First Name: </label>
 
+         <div class="col col-60">
+            <input type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
+        </div>
 
-    <div ng-hide="editForm === 2">
-        Password
-        <button ng-click="showEditForm(2)">Edit</button>
+        <button class="button button-small button-light" ng-click="editFirstname(userEdit)">Save</button>&nbsp;
+        <button class="button button-small button-light" ng-click="showEditForm(0)">Cancel</button>
     </div>
-    <div ng-show="editForm === 2">
+
+    <!-- last name -->
+    <div class="row" ng-hide="editForm === 4">
+        <label class = "col col-20"> Last Name:</label> 
+
+         <div class="col col-60">
+            {{user.lastname}}
+        </div>
+
+        <button class="button button-small button-light" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+    </div>
+
+    <div class="row" ng-show="editForm === 4">
+        <label class = "col col-20">Last Name: </label>
+
+         <div class="col col-60">
+            <input type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
+        </div>
+        <button class="button button-small button-light" ng-click="editLastname(userEdit)">Save</button>&nbsp;
+        <button class="button button-small button-light" ng-click="showEditForm(0)">Cancel</button>
+    </div>
+
+    <!-- password -->
+    <div class="row" ng-hide="editForm === 2">
+        <label class = "col col-20">Password: </label>
+
+        <div class="col col-60">
+        </div>
+
+
+              <button class="button button-small button-light " ng-click="showEditForm(2)"><i class="icon ion-edit"></i>&nbsp; <EM></EM>Edit</button>
+    
+      
+    </div>
+
+    <div class="row"  ng-show="editForm === 2">
+         <label class = "col col-20">Password: </label>
         <form name="passwordForm" ng-submit="changePassword(password)" novalidate>
+
              <div class="alert alert-dismissable alert-danger" ng-show="errorMessage">
               <button type="button" class="close" ng-click="showErrorMessage(false)">×</button>
               <strong>Incorrect Current Password</strong>
-             </div> 
-            <div>Current Password: <input type="password" ng-model="password.old_password" required></div>
-            <div>New Password: <input type="password" ng-model="password.new_password" required></div>
-            <div>Retype New Password: <input type="password" ng-model="password.confNew_password" required></div>
-            <button type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
-            <button type="button" ng-click="showEditForm(0)">Cancel</button>
+             </div>
+
+             <br>
+
+            <div class="row">
+                <label align="right" class = "col col-30">Current:</label> 
+
+                 <div class="col col-50">
+                    <input type="password" ng-model="password.old_password" required> 
+                </div>
+            </div>
+
+            <div class="row">
+                <label align="right" class = "col col-30">New:</label>
+                 <input type="password" ng-model="password.new_password" required>
+             </div>
+
+            <div class="row">
+                <label align="right" class = "col col-50">Retype New:</label> 
+                <input type="password" ng-model="password.confNew_password" required>
+            </div>
+
+            <div>            
+            <button class="button button-small button-light" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
+
+            <button class="button button-small button-light" type="button" ng-click="showEditForm(0)">Cancel</button>
+            </div>
+
         </form>
     </div>
-
-    
-    <div ng-hide="editForm === 3">
-        First Name: {{user.firstname}}
-        <button ng-click="showEditForm(3)">Edit</button>
-    </div>
-    <div ng-show="editForm === 3">
-        First Name: <input type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
-        <button ng-click="editFirstname(userEdit)">Save</button>
-        <button ng-click="showEditForm(0)">Cancel</button>
+      </div>
     </div>
 
-    <div ng-hide="editForm === 4">
-         Last Name: {{user.lastname}}
-        <button ng-click="showEditForm(4)">Edit</button>
-    </div>
-    <div ng-show="editForm === 4">
-        Last Name: <input type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
-        <button ng-click="editLastname(userEdit)">Save</button>
-        <button ng-click="showEditForm(0)">Cancel</button>
-    </div>
+
 </ion-content>
 </div>
 <div>
