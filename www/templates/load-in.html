@@ -1,9 +1,18 @@
 <div ng-controller="MainCtrl">
+
 <ion-header-bar align-title="left" class="bar-positive">
   <h1 class="title">FM MARKETING </h1>
     <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
 </ion-header-bar>
 <ion-content>
-  Some content!
+  <div class="card" ng-repeat="loadOut in loadOuts">
+    {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
+     <a class="item assertive" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status === confirmed">
+          View
+     </a>
+     <button class="item assertive" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
+          Confirm
+     </button>
+</div>
 </ion-content>
 <div>

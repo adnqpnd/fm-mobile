@@ -8,8 +8,6 @@ angular.module('fMMobileApp')
   $scope.userEdit = {};
   $scope.password = {};
   $scope.errorMessage = false; 
-
-  console.log($scope.userId);
  
   var getUser = function () {
     $http.get(httpHost + '/users/' + userService.getUserID()).success(function(data){

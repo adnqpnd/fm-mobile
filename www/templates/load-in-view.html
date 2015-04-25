@@ -1,0 +1,25 @@
+<div ng-controller="MainCtrl">
+<div ng-controller="LoadInViewCtrl">
+<ion-header-bar align-title="left" class="bar-positive">
+ <a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+  <h1 class="title">FM MARKETING </h1>
+    <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
+</ion-header-bar>
+<ion-content>
+  <div >
+    <ul class="list">
+    <li class="item" ng-repeat="product in currentLoadOut">
+       {{product.sku_id.brand_name}} {{product.sku_id.sku_name}} {{product.sku_id.size}}
+       Bay: <select ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays"></select>
+       Return: <input type="number" ng-model="returns[$index]">
+       Production Date: <input type="date" ng-model="productionDate[$index]">
+    </li>
+    </ul>
+    <button ng-click="confirm()" class="button button-balanced">
+  LOADIN
+</button>
+  </div>
+
+</ion-content>
+</div>
+<div>

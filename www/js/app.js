@@ -17,6 +17,7 @@ angular.module('fMMobileApp', ['ionic','angular-jwt'])
     }
   });
 })
+.constant('_', window._)
 .config(function($stateProvider,$urlRouterProvider) {
   $stateProvider
   .state('login', {
@@ -32,6 +33,10 @@ angular.module('fMMobileApp', ['ionic','angular-jwt'])
   .state('editAccount', {
     url: '/edit-account',
     templateUrl: 'templates/edit-account.html',
+  })
+  .state('viewLoadIn', {
+    url: '/loadIn/:loadInID',
+    templateUrl: 'templates/load-in-view.html',
   });
 
   $urlRouterProvider.otherwise('/');
