@@ -8,7 +8,10 @@
   <div style="margin-top:8%;">
     <img src="img/FMlogo2.png" width="100%;">
   </div>
-
+  <div ng-show="errorMessage" style="color: red;" >
+    {{error}}
+    <button ng-click="showErrorMessage(false)">X</button>
+  </div>
   <div class="card transparent-i" style="margin-top:-7%;">
   <div class="item item-text-wrap transparent-i">
       <div class="list transparent-i"  >
