@@ -22,7 +22,7 @@
               <label class="col col-10">Bay:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as aabayName(bay) for bay in bays"></select>
+                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays"></select>
             </div>
         
           &nbsp; &nbsp;
@@ -46,7 +46,7 @@
 
            <div>
               <button ng-click="confirm()" class="button button-small balanced pull-right liButton" style="">
-        LOAD IN </button>
+        CONFIRM </button>
            </div> 
           
         </ul>

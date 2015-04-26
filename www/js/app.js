@@ -41,7 +41,7 @@ angular.module('fMMobileApp', ['ionic','angular-jwt'])
 
   $urlRouterProvider.otherwise('/');
 })
-.constant('httpHost','http://192.168.1.116:1337')
+.constant('httpHost','http://localhost:1337')
 .controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
   $ionicActionSheet,$state,$rootScope){
    userService.getUser().success(function(data){
