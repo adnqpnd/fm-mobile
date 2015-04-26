@@ -22,7 +22,9 @@
               <label class="col col-10">Bay:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays"></select>
+                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays">
+                   <option value="">Select Bay</option>
+                </select>
             </div>
         
           &nbsp; &nbsp;

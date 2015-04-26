@@ -76,6 +76,7 @@ angular.module('fMMobileApp')
       'loadout': parseInt(loadInID),
       'loadin_no': parseInt(loadInID)
      }
+     console.log(finalLoadIn);
 
      io.socket.request($scope.socketOptions('post','/load-in/add',{"Authorization": "Bearer " + authService.getToken()},finalLoadIn), function (body, JWR) {
       console.log('Sails responded with post bay: ', body);
