@@ -38,8 +38,9 @@ angular.module('fMMobileApp')
   getTrucks();
 
   $scope.truckName = function (truck) {
-
+    console.log(truck);
     var index = _.findIndex($scope.trucks, { 'id': truck });
+    console.log(index);
     index += 1;
     return "Truck #" + index;
   };

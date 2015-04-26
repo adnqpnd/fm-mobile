@@ -7,11 +7,12 @@
 
 <ion-content>
   <div class="list">
+    <div ng-repeat = "truck in trucks">
      <div class="item item-divider">
-       {{truckName(loadOut.truck_id)}}
-    </div>
+       {{truckName(truck.id)}}
+     </div>
 
-    <div class="item" ng-repeat="loadOut in loadOuts">
+     <div class="item" ng-repeat="loadOut in loadOuts | truckFilter: truck.id">
         {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
 
           <a class="item assertive" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status === confirmed">
@@ -21,10 +22,8 @@
            <button class="item assertive pull-right button button-small" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed" style="margin:-5% 0%;">
                 Confirm
            </button>
+     </div>
     </div>
-  
-   
-  </div>
 
 
 </ion-content>
