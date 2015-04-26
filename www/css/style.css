@@ -18,3 +18,22 @@ div.transparent-i{
 	background-color: transparent !important; 
 	border: none !important;
 }
+
+.logo{
+  background-image: url("img/FMlogo2.jpg");
+  background-size: cover;
+}
+
+.liButton{
+  margin: 10px;
+}
+
+img.imgLogo{
+  width:20%;
+  height:100%;
+  margin-left:-5%;
+}
+
+.loadinContent{
+  padding: 5px 30px;
+}

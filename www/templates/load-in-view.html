@@ -1,25 +1,59 @@
 <div ng-controller="MainCtrl">
-<div ng-controller="LoadInViewCtrl">
-<ion-header-bar align-title="left" class="bar-positive">
- <a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
-  <h1 class="title">FM MARKETING </h1>
-    <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
-</ion-header-bar>
-<ion-content>
-  <div >
-    <ul class="list">
-    <li class="item" ng-repeat="product in currentLoadOut">
-       {{product.sku_id.brand_name}} {{product.sku_id.sku_name}} {{product.sku_id.size}}
-       Bay: <select ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays"></select>
-       Return: <input type="number" ng-model="returns[$index]">
-       Production Date: <input type="date" ng-model="productionDate[$index]">
-    </li>
-    </ul>
-    <button ng-click="confirm()" class="button button-balanced">
-  LOADIN
-</button>
-  </div>
+  <div ng-controller="LoadInViewCtrl">
 
-</ion-content>
-</div>
+    <ion-header-bar align-title="left" class="bar-positive">
+     <a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark "></a>
+      <h1 class="title">LOAD IN </h1>
+        <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
+    </ion-header-bar>
+
+    <ion-content>
+    
+      <div class="card" >
+           <div class="item item-divider">
+            <h2>   </h2>
+            </div>
+
+        <ul class="list">
+          <li class="item" ng-repeat="product in currentLoadOut">
+
+            <h2> {{product.sku_id.brand_name}} {{product.sku_id.sku_name}} {{product.sku_id.size}}</h2>
+            <div class="row loadinContent">
+              <label class="col col-10">Bay:</label>
+
+            <div class="col col-40">
+                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as aabayName(bay) for bay in bays"></select>
+            </div>
+        
+          &nbsp; &nbsp;
+
+            <label class="col col-10">Return:</label>
+
+            <div class="col col-40">
+             <input class="form-control" type="number" ng-model="returns[$index]">
+            </div>
+          </div>
+
+          <div class="row loadinContent">
+            <label class="col col-25">Production Date:</label>
+
+            <div class="col col-75">
+               <input class ="form-control" type="date" ng-model="productionDate[$index]">
+            </div>
+          </div>
+            
+            </li>
+
+           <div>
+              <button ng-click="confirm()" class="button button-small balanced pull-right liButton" style="">
+        LOAD IN </button>
+           </div> 
+          
+        </ul>
+    
+         
+      </div>
+
+    </ion-content>
+  </div>
 <div>
