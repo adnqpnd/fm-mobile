@@ -53,18 +53,18 @@ angular.module('fMMobileApp')
 
   	console.log(loadOutInfo);
 
-    // io.socket.request($scope.socketOptions('post','/load-out/confirm',{"Authorization": "Bearer " + authService.getToken()},loadOutInfo), function (body, JWR) {
-    //   console.log('Sails responded with post bay: ', body);
-    //   console.log('and with status code: ', JWR.statusCode);
-    //   if(JWR.statusCode === 200){
-    //     // $scope.bays.push(body);
-    //     //   $state.go(loadIn);
-    //     //   $scope.bayArray = [];
-    //     //   $scope.returns = [];
-    //     //   $scope.productionDate = [];
-    //     // $scope.$digest();
-    //   }
-    // }); 
+    io.socket.request($scope.socketOptions('post','/load-out/confirm',{"Authorization": "Bearer " + authService.getToken()},loadOutInfo), function (body, JWR) {
+      console.log('Sails responded with post bay: ', body);
+      console.log('and with status code: ', JWR.statusCode);
+      if(JWR.statusCode === 200){
+        // $scope.bays.push(body);
+        //   $state.go(loadIn);
+        //   $scope.bayArray = [];
+        //   $scope.returns = [];
+        //   $scope.productionDate = [];
+        // $scope.$digest();
+      }
+    }); 
   };
 
   // io.socket.on('loadout', function(msg){
