@@ -15,11 +15,11 @@
      <div class="item" ng-repeat="loadOut in loadOuts | truckFilter: truck.id">
         {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
 
-          <a class="item assertive" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status === confirmed">
+          <a class="item assertive pull-right button button-small" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
           View
           </a>
 
-           <button class="item assertive pull-right button button-small" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed" style="margin:-5% 0%;">
+           <button  ng-hide="loadOut.status !== 'Pending'" class="item assertive pull-right button button-small" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
                 Confirm
            </button>
      </div>
