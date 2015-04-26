@@ -1,9 +1,10 @@
-<div ng-controller="MainCtrl">
+<div ng-controller="MainCtrl" class="responsive-sm responsive-md ">
+">
   <div ng-controller="LoadInViewCtrl">
 
     <ion-header-bar align-title="left" class="bar-positive">
-     <a href="#/loadIn" class="button icon-left ion-chevron-left button-clear button-dark "></a>
-      <h1 class="title">LOAD IN </h1>
+     <a href="#/loadIn" class="button icon-left ion-chevron-left button-small button-clear button-white"> </a>
+      <h1 class="title" style="margin-left:-15px;"> <img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN CONFIRMATION </h1>
         <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
     </ion-header-bar>
 
@@ -47,7 +48,7 @@
             </li>
 
            <div>
-              <button ng-click="confirm()" class="button button-small balanced pull-right liButton" style="">
+              <button ng-click="confirm()"class="button calm pull-right  button-outline button-calm liButton" style="">
         CONFIRM </button>
            </div> 
           

@@ -5,32 +5,36 @@
     <h1 class="title">LOG IN</h1>
   </div>
  -->
-  <div style="margin-top:8%;">
+  <div style="">
     <img src="img/FMlogo2.png" width="100%;">
   </div>
-  <div ng-show="errorMessage" style="color: red;" >
-    {{error}}
-    <button ng-click="showErrorMessage(false)">X</button>
-  </div>
+  
   <div class="card transparent-i" style="margin-top:-7%;">
-  <div class="item item-text-wrap transparent-i">
+
+    <div class="alert alert-dismissable alert-danger col-50 col-offset-25" ng-show="errorMessage" style="opacity:0.3" align="center">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{error}}</strong>
+      </div>
+    <div class="item item-text-wrap transparent-i">
       <div class="list transparent-i"  >
-    <form class="transparent-i " name="loginForm" ng-submit="logIn(guest)" novalidate>
-     <label class="item item-input">
-       <span class="input-label"><i class="icon ion-person"></i>&nbsp; &nbsp;  Username</span>
-       <input type="text" ng-model="guest.username"required>
-     </label>
-     <label class="item item-input">
-       <span class="input-label"><i class="icon ion-locked"></i>&nbsp; &nbsp; Password</span>
-       <input type="password" ng-model="guest.password" required>
-     </label>
-        <button ng-disabled="loginForm.$invalid" class="button button-block button-light">
-         Login
-       </button>
-     </form>
-   </div>
+        <form class="transparent-i " name="loginForm" ng-submit="logIn(guest)" novalidate>
+         <label class="item item-input">
+           <span class="input-label"><i class="icon ion-person"></i>&nbsp; &nbsp;  Username</span>
+           <input type="text" ng-model="guest.username"required>
+         </label>
+
+         <label class="item item-input">
+           <span class="input-label"><i class="icon ion-locked"></i>&nbsp; &nbsp; Password</span>
+           <input type="password" ng-model="guest.password" required>
+         </label>
+
+            <button ng-disabled="loginForm.$invalid" class="button button-block button-light">
+             LOGIN
+
+         </Aform>
+     </div>
+    </div>
   </div>
-</div>
  
 
    <!-- footer -->
