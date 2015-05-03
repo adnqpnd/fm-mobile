@@ -69,7 +69,8 @@ angular.module('fMMobileApp')
     
     if(msg.verb === "confirmed") {
       console.log("LoadOut Confirmed");
-      console.log("Confirmed");
+      var index = _.findIndex($scope.loadOuts,{'id': msg.data.id});
+      $scope.loadOuts[index] = msg.data;
       $scope.$digest();
     }
 
