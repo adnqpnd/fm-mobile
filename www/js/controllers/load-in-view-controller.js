@@ -83,7 +83,7 @@ angular.module('fMMobileApp')
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
-          $state.go(loadIn);
+          $state.go('loadIn');
           $scope.bayArray = [];
           $scope.returns = [];
           $scope.productionDate = [];
