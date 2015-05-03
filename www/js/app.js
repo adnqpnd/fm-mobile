@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('fMMobileApp', ['ionic','angular-jwt'])
+angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,13 +35,14 @@ angular.module('fMMobileApp', ['ionic','angular-jwt'])
     templateUrl: 'templates/edit-account.html',
   })
   .state('viewLoadIn', {
+    // url: '/loadIn/:loadInID',
     url: '/loadIn/:loadInID',
     templateUrl: 'templates/load-in-view.html',
   });
 
   $urlRouterProvider.otherwise('/');
 })
-.constant('httpHost','http://localhost:1337')
+.constant('httpHost','http://192.168.1.102:1337')
 .controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
   $ionicActionSheet,$state,$rootScope){
    userService.getUser().success(function(data){

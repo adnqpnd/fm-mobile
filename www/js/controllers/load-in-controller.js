@@ -62,6 +62,17 @@ angular.module('fMMobileApp')
     }); 
   };
 
+  io.socket.on('loadout', function(msg){
+    console.log("Message Verb: " + msg.verb);
+    console.log("Message Data :");
+    console.log(msg.data);
+    
+    if(msg.verb === "confirmed") {
+      console.log("LoadOut Confirmed");
+      console.log("Confirmed");
+      $scope.$digest();
+    }
 
+  });
 
 }]);

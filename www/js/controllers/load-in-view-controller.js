@@ -2,7 +2,7 @@
 
 angular.module('fMMobileApp')
 .controller('LoadInViewCtrl',['$scope','$http','$state','authService','httpHost','_',
-  '$stateParams','$timeout','$filter',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter){
+  '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
   $scope.currentLoadOut = {};
   $scope.loadOuts = {};
   var loadInID = $stateParams.loadInID;
