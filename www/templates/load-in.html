@@ -1,30 +1,46 @@
-<div ng-controller="MainCtrl">
+<div ng-controller="MainCtrl" class=" responsive-sm responsive-md ">
+">
 
 <ion-header-bar align-title="left" class="bar-positive">
-  <h1 class="title" ><img src="img/FMlogo.png" class="imgLogo">LOAD IN </h1>
+  <h1 class="title" ><img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN </h1>
     <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
 </ion-header-bar>
 
 <ion-content>
-  <div class="list">
-    <div ng-repeat = "truck in trucks">
+  <div class="list" ng-repeat = "truck in trucks">
+
      <div class="item item-divider">
        {{truckName(truck.id)}}
      </div>
 
      <div class="item" ng-repeat="loadOut in loadOuts | truckFilter: truck.id">
-        {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
 
-          <a class="item assertive pull-right button button-small" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
-          View
-          </a>
+       <div class="row">
+         <label class="col col-60">
+              {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
+          </label>
 
+<<<<<<< HEAD
            <a ng-hide="loadOut.status !== 'Pending'" class="item assertive pull-right button button-small" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
                 Confirm
            </a>
      </div>
+=======
+            <div class="col col-40">
+              <a class="button calm pull-right button-outline button-calm" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
+              VIEW
+              </a>
+
+               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
+                    CONFIRM
+               </button>
+               </div>
+        </div>
+      </div>
+>>>>>>> origin/master
     </div>
 
 
 </ion-content>
+
 <div>
