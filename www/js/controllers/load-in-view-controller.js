@@ -7,6 +7,7 @@ angular.module('fMMobileApp')
   var loadInID = $stateParams.loadInID;
   $scope.bays = [];
   $scope.loadIn = {};
+  $scope.loadIns = [];
   
   
   var getLoadOuts = function () {
@@ -49,17 +50,21 @@ angular.module('fMMobileApp')
      return sku.brand_name +" "+ sku.sku_name +" "+sku.size;
    };
 
-   $scope.confirm = function (loadIn) {
-    console.log(loadIn);
+   $scope.addLoadIn = function (loadIn){
+     var item = {
+       'sku_id': loadIn.product.sku_id.id,
+       'cases': loadIn.returns,
+       'bottlespercase': loadIn.product.sku_id.bottlespercase,
+       'bay_id': loadIn.bay,
+       'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
+       'lifespan': loadIn.product.sku_id.lifespan,
+     }
+     $scope.loadIns.push(item);
+   };
+
+   $scope.confirm = function () {
     var finalLoadIn = {
-      'products' :  {
-         'sku_id': loadIn.product.sku_id.id,
-         'cases': loadIn.returns,
-         'bottlespercase': loadIn.product.sku_id.bottlespercase,
-         'bay_id': loadIn.bay,
-         'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
-         'lifespan': loadIn.product.sku_id.lifespan,
-       },
+      'products' :  $scope.loadIns,
       'loadout': parseInt(loadInID),
       'loadin_no': parseInt(loadInID)
      }

@@ -15,8 +15,8 @@
             <h2>   </h2>
             </div>
 
-        <ul class="list">
-          <form name="loadInViewForm" ng-submit="confirm(loadIn)" novalidate>
+      
+          <form name="loadInViewForm" ng-submit="addLoadIn(loadIn)" novalidate>
             <div class="row loadinContent">
              <label class="col col-10">Product:</label>
 
@@ -52,13 +52,23 @@
              <div>
               <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
 
-              CONFIRM 
+              ADD
               </button>
            </div> 
 
              </form>
-          
+        <ul class="list">
+          <li ng-repeat="loadIn in loadIns">
+            {{loadIn}}
+          </li>
         </ul>
+
+         <div ng-show="loadIns.length !== 0">
+              <button ng-click="confirm()" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
+
+              CONFIRM
+              </button>
+           </div> 
     
          
       </div>
