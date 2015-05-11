@@ -51,6 +51,25 @@ angular.module('fMMobileApp')
    };
 
    $scope.addLoadIn = function (loadIn){
+     //$scope.loadIns.push(loadIn);
+     console.log(loadIn);
+     if($scope.loadIns.push(loadIn)){
+     // var index = _.findIndex($scope.loadOuts,loadIn.product);
+     // $scope.loadOuts.splice(index,1);
+     // $scope.loadIn.product = $scope.loadOuts[0];
+     }
+   };
+
+   $scope.deleteLoadIn = function(loadIn){
+     var index = _.findIndex($scope.loadIns,loadIn);
+     console.log(index);
+     $scope.loadIns.splice(index,1);
+     console.log(loadIn);
+     $scope.loadOuts.push(loadIn.product);
+     $scope.loadIn.product = $scope.loadOuts[0];
+   };
+
+   $scope.confirm = function () {
      var item = {
        'sku_id': loadIn.product.sku_id.id,
        'cases': loadIn.returns,
@@ -59,10 +78,7 @@ angular.module('fMMobileApp')
        'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
        'lifespan': loadIn.product.sku_id.lifespan,
      }
-     $scope.loadIns.push(item);
-   };
 
-   $scope.confirm = function () {
     var finalLoadIn = {
       'products' :  $scope.loadIns,
       'loadout': parseInt(loadInID),
