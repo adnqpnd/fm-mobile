@@ -2,7 +2,7 @@
 ">
 
 <ion-header-bar align-title="left" class="bar-positive">
-  <h1 class="title" ><img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN </h1>
+  <h1 class="title" ><img src="img/ico/android-icon-48x48.png" class="imgLogo">Tally </h1>
     <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
 </ion-header-bar>
 
@@ -21,13 +21,9 @@
           </label>
      </div>
             <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
+              <a class="button calm pull-right button-outline button-calm" href="#/tally/{{loadOut.id}}">
               VIEW
               </a>
-
-               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
-                    CONFIRM
-               </button>
                </div>
         </div>
       </div>

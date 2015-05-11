@@ -30,6 +30,11 @@ angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
     templateUrl: 'templates/load-in.html',
     controller: 'LoadInCtrl'
   })
+  .state('tally', {
+    url: '/tally',
+    templateUrl: 'templates/tally.html',
+    controller: 'TallyCtrl'
+  })
   .state('editAccount', {
     url: '/edit-account',
     templateUrl: 'templates/edit-account.html',
@@ -38,11 +43,16 @@ angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
     // url: '/loadIn/:loadInID',
     url: '/loadIn/:loadInID',
     templateUrl: 'templates/load-in-view.html',
+  })
+  .state('viewTally', {
+    // url: '/loadIn/:loadInID',
+    url: '/tally/:loadInID',
+    templateUrl: 'templates/tally-view.html',
   });
 
   $urlRouterProvider.otherwise('/');
 })
-.constant('httpHost','http://192.168.1.102:1337')
+.constant('httpHost','http://192.168.0.101:1337')
 .controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
   $ionicActionSheet,$state,$rootScope){
    userService.getUser().success(function(data){

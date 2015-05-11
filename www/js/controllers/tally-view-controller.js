@@ -1,21 +1,27 @@
 'use strict';
 
 angular.module('fMMobileApp')
-.controller('LoadInViewCtrl',['$scope','$http','$state','authService','httpHost','_',
+.controller('TallyViewCtrl',['$scope','$http','$state','authService','httpHost','_',
   '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
+  $scope.currentLoadOut = {};
   $scope.loadOuts = {};
   var loadInID = $stateParams.loadInID;
   $scope.bays = [];
-  $scope.loadIn = {};
-  
+  $scope.bayArray = [];
+  $scope.returns = [];
+  $scope.productionDate = [];
   
   var getLoadOuts = function () {
     $http.get(httpHost + "/load-out/products?id="+loadInID+"'").success( function (data) {
       $scope.loadOuts = data;
         console.log("Load Out:");
         console.log($scope.loadOuts);
+        console.log(loadInID);
 
-        $scope.loadIn.product = $scope.loadOuts[0];
+       $scope.currentLoadOut = $scope.loadOuts;
+     
+
+        console.log($scope.currentLoadOut);
 
     }).error(function (err) {
       console.log(err);
@@ -26,9 +32,11 @@ angular.module('fMMobileApp')
     $http.get(httpHost + '/bays/list').success( function (data) {
       if(data.length !== 0){
       $scope.bays = data;
-       $scope.loadIn.bay = $scope.bays[0].id;
       console.log("Bays:");
       console.log($scope.bays);
+        for (var i = $scope.currentLoadOut; i >= $scope.currentLoadOut.length; i++) {
+          $scope.bayArray[i] = $scope.bays[0].id;
+        }
       }
     }).error(function (err) {
       console.log(err);
@@ -38,28 +46,33 @@ angular.module('fMMobileApp')
 
   getLoadOuts();
   // getBays();
+   $timeout(function(){
        getBays();
-
+   }, 3000)
 
    $scope.bayName = function (bay) {
      return "Bay " + bay.bay_name;
    };
 
-   $scope.prodName = function (sku) {
-     return sku.brand_name +" "+ sku.sku_name +" "+sku.size;
-   };
-
-   $scope.confirm = function (loadIn) {
-    console.log(loadIn);
-    var finalLoadIn = {
-      'products' :  {
-         'sku_id': loadIn.product.sku_id.id,
-         'cases': loadIn.returns,
-         'bottlespercase': loadIn.product.sku_id.bottlespercase,
-         'bay_id': loadIn.bay,
-         'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
-         'lifespan': loadIn.product.sku_id.lifespan,
-       },
+   $scope.confirm = function () {
+     console.log($scope.bayArray);
+     console.log($scope.returns);
+     console.log($scope.productionDate)
+     var products = [];
+     for (var i = 0; i < $scope.bayArray.length; i++) {
+       var item = {
+         'sku_id': $scope.currentLoadOut[i].sku_id.id,
+         'cases': $scope.returns[i],
+         'bottlespercase': $scope.currentLoadOut[i].sku_id.bottlespercase,
+         'bay_id':$scope.bayArray[i],
+         'prod_date': $filter('date')($scope.productionDate[i],'yyyy-MM-dd'),
+         'lifespan': $scope.currentLoadOut[i].sku_id.lifespan,
+       };
+       products[i] = item ;
+     };
+     console.log(products);
+     var finalLoadIn = {
+      'products' : products,
       'loadout': parseInt(loadInID),
       'loadin_no': parseInt(loadInID)
      }
@@ -71,9 +84,9 @@ angular.module('fMMobileApp')
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
           $state.go('loadIn');
-          $scope.loadIn = {}
-          $scope.loadIn.product = $scope.loadOuts[0];
-          $scope.loadIn.bay = $scope.bays[0].id;
+          $scope.bayArray = [];
+          $scope.returns = [];
+          $scope.productionDate = [];
         $scope.$digest();
       }
     }); 

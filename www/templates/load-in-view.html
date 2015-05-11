@@ -16,16 +16,19 @@
             </div>
 
         <ul class="list">
-          <form name="loadInViewForm" novalidate>
-          <li class="item" ng-repeat="product in currentLoadOut">
-
-            <h2> {{product.sku_id.brand_name}} {{product.sku_id.sku_name}} {{product.sku_id.size}}</h2>
+          <form name="loadInViewForm" ng-submit="confirm(loadIn)" novalidate>
             <div class="row loadinContent">
+             <label class="col col-10">Product:</label>
+
+            <div class="col col-40">
+                <select class = "form-control" ng-model="loadIn.product" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in loadOuts" required>
+                </select>
+            </div>
+
               <label class="col col-10">Bay:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="bayArray[$index]" ng-options="bay.id as bayName(bay) for bay in bays" required>
-                   <option value="">Select Bay</option>
+                <select class = "form-control" ng-model="loadIn.bay" ng-options="bay.id as bayName(bay) for bay in bays" required>
                 </select>
             </div>
         
@@ -34,7 +37,7 @@
             <label class="col col-10">Returns:</label>
 
             <div class="col col-40">
-             <input class="form-control" type="number" ng-model="returns[$index]" required>
+             <input class="form-control" type="number" ng-model="loadIn.returns" required>
             </div>
           </div>
 
@@ -42,13 +45,12 @@
             <label class="col col-25">Production Date:</label>
 
             <div class="col col-75">
-               <input class ="form-control" type="date" ng-model="productionDate[$index]" required>
+               <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
             </div>
           </div>   
-            </li>
 
              <div>
-              <button ng-click="confirm()" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
+              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
 
               CONFIRM 
               </button>

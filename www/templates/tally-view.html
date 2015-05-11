@@ -1,0 +1,41 @@
+<div ng-controller="MainCtrl" class="responsive-sm responsive-md ">
+">
+  <div ng-controller="LoadInViewCtrl">
+
+    <ion-header-bar align-title="left" class="bar-positive">
+     <a href="#/loadIn" class="button icon-left ion-chevron-left button-small button-clear button-white"> </a>
+      <h1 class="title" style="margin-left:-15px;"> <img src="img/ico/android-icon-48x48.png" class="imgLogo">TALLY VIEW </h1>
+        <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
+    </ion-header-bar>
+
+    <ion-content>
+    
+      <div class="card" >
+           <div class="item item-divider">
+            <h2>   </h2>
+            </div>
+
+        <ul class="list">
+
+          <li class="item" ng-repeat="product in currentLoadOut">
+
+            <h2> {{product.sku_id.brand_name}} {{product.sku_id.sku_name}} {{product.sku_id.size}}</h2>
+             <label class="col col-10">Cases:</label>
+
+            <div class="col col-40">
+             <input class="form-control" type="number" value="{{product.cases}}"  disabled>
+            </div>
+          </div>
+         
+            </li>
+
+ 
+          
+        </ul>
+    
+         
+      </div>
+
+    </ion-content>
+  </div>
+<div>
