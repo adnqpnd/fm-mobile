@@ -1,0 +1,28 @@
+<div ng-controller="MainCtrl" class="responsive-sm responsive-md ">
+">
+  <div ng-controller="EmptiesViewCtrl">
+
+    <ion-header-bar align-title="left" class="bar-positive">
+     <a href="#/empties" class="button icon-left ion-chevron-left button-small button-clear button-white"> </a>
+      <h1 class="title" style="margin-left:-15px;"> <img src="img/ico/android-icon-48x48.png" class="imgLogo">DELIVERIES</h1>
+        <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
+    </ion-header-bar>
+
+    <ion-content>
+    
+       <div class="list" ng-repeat = "delivery in deliveries">
+
+     <div class="item item-divider">
+       {{delivery.customer_id.establishment_name}}
+          <div class="col col-40">
+              <a class="button calm pull-right button-outline button-calm" href="#/returns/{{delivery.id}}">
+              VIEW
+              </a>
+               </div>
+     </div>
+
+        </div>
+
+    </ion-content>
+  </div>
+<div>

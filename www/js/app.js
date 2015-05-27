@@ -27,13 +27,15 @@ angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
   })
   .state('loadIn', {
     url: '/loadIn',
-    templateUrl: 'templates/load-in.html',
-    controller: 'LoadInCtrl'
+    templateUrl: 'templates/load-in.html'
   })
   .state('tally', {
     url: '/tally',
-    templateUrl: 'templates/tally.html',
-    controller: 'TallyCtrl'
+    templateUrl: 'templates/tally.html'
+  })
+  .state('empties', {
+    url: '/empties',
+    templateUrl: 'templates/empties.html'
   })
   .state('editAccount', {
     url: '/edit-account',
@@ -42,17 +44,28 @@ angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
   .state('viewLoadIn', {
     // url: '/loadIn/:loadInID',
     url: '/loadIn/:loadInID',
-    templateUrl: 'templates/load-in-view.html',
+    templateUrl: 'templates/load-in-view.html'
   })
   .state('viewTally', {
     // url: '/loadIn/:loadInID',
     url: '/tally/:loadInID',
-    templateUrl: 'templates/tally-view.html',
+    templateUrl: 'templates/tally-view.html'
+  })
+  .state('viewEmpties', {
+    // url: '/loadIn/:loadInID',
+    url: '/empties/:loadInID',
+    templateUrl: 'templates/empties-view.html'
+  })
+  .state('returns', {
+    // url: '/loadIn/:loadInID',
+    url: '/returns/:deliveryID',
+    templateUrl: 'templates/returns.html',
+    controller: 'EmptiesViewCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
 })
-.constant('httpHost','http://192.168.0.101:1337')
+.constant('httpHost','http://localhost:1337')
 .controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
   $ionicActionSheet,$state,$rootScope){
    userService.getUser().success(function(data){

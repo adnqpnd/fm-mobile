@@ -1,6 +1,6 @@
 <div ng-controller="MainCtrl" class=" responsive-sm responsive-md ">
 ">
-
+<div ng-controller="LoadInCtrl">
 <ion-header-bar align-title="left" class="bar-positive">
   <h1 class="title" ><img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN </h1>
     <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
@@ -31,7 +31,6 @@
                </div>
         </div>
       </div>
-    </div>
 
           <ion-tabs class="tabs-icon-top tabs-positive">
 
@@ -41,9 +40,12 @@
         <ion-tab title="Tally" icon="ion-ios-world" ui-sref="tally">
         </ion-tab>
 
+        <ion-tab title="Empties" icon="ion-ios-world" ui-sref="empties">
+        </ion-tab>
+
       </ion-tabs>
 
 
 </ion-content>
-
-<div>
+</div>
+</div>
