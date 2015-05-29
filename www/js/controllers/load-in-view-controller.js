@@ -145,7 +145,7 @@ angular.module('fMMobileApp')
       'products' : $scope.products,
       'loadout': loadOutID,
       'loadin_no': loadOutID,
-      'customer': customerID
+      'customer_id': customerID
      }
      console.log(finalLoadIn);
 
