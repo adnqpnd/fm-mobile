@@ -61,6 +61,11 @@ angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
     url: '/returns/:deliveryID',
     templateUrl: 'templates/returns.html',
     controller: 'EmptiesViewCtrl'
+  })
+  .state('loadInFinal', {
+    // url: '/loadIn/:loadInID',
+    url: '/loadInFinal/:deliveryID',
+    templateUrl: 'templates/load-in-final.html'
   });
 
   $urlRouterProvider.otherwise('/');

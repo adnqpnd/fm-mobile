@@ -1,0 +1,78 @@
+<div ng-controller="MainCtrl" class="responsive-sm responsive-md ">
+">
+  <div ng-controller="LoadInViewCtrl">
+
+    <ion-header-bar align-title="left" class="bar-positive">
+     <a href="#/loadIn" class="button icon-left ion-chevron-left button-small button-clear button-white"> </a>
+      <h1 class="title" style="margin-left:-15px;"> <img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN CONFIRMATION </h1>
+        <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
+    </ion-header-bar>
+
+    <ion-content>
+    
+      <div class="card" >
+           <div class="item item-divider">
+            <h2>   </h2>
+            </div>
+
+      
+          <form name="loadInViewForm" ng-submit="addLoadIn(loadIn)" novalidate>
+            <div class="row loadinContent">
+             <label class="col col-10">Product:</label>
+
+            <div class="col col-40">
+                <select class = "form-control" ng-model="loadIn.product" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
+                </select>
+            </div>
+
+              <label class="col col-10">Bay:</label>
+
+            <div class="col col-40">
+                <select class = "form-control" ng-model="loadIn.bay" ng-options="bay.id as bayName(bay) for bay in bays" required>
+                </select>
+            </div>
+        
+          &nbsp; &nbsp;
+
+            <label class="col col-10">Returns:</label>
+
+            <div class="col col-40">
+             <input class="form-control" type="number" ng-model="loadIn.returns" required>
+            </div>
+          </div>
+
+          <div class="row loadinContent">
+            <label class="col col-25">Production Date:</label>
+
+            <div class="col col-75">
+               <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
+            </div>
+          </div>   
+
+             <div>
+              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
+
+              ADD
+              </button>
+           </div> 
+
+             </form>  
+      </div>
+
+        <ul class="list">
+          <li ng-repeat="loadIn in loadIns">
+            {{loadIn}}
+            <button ng-click="deleteLoadIn($index)">Delete</button>
+          </li>
+        </ul>
+
+         <div ng-show="loadIns.length !== 0">
+              <button ng-click="confirm()" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
+
+              CONFIRM
+              </button>
+           </div> 
+
+    </ion-content>
+  </div>
+<div>
