@@ -28,7 +28,7 @@
               <label class="col col-10">Bay:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="loadIn.bay" ng-options="bay.id as bayName(bay) for bay in bays" required>
+                <select class = "form-control" ng-model="loadIn.bay" ng-options="bay as bayName(bay) for bay in bays" required>
                 </select>
             </div>
         
@@ -59,15 +59,27 @@
              </form>  
       </div>
 
-        <ul class="list">
-          <li ng-repeat="loadIn in loadIns">
-            {{loadIn}}
-            <button ng-click="deleteLoadIn($index)">Delete</button>
-          </li>
-        </ul>
+          <table>
+            <thead>
+              <th>Product</th>
+              <th>Bay</th>
+              <th>Returns</th>
+              <th>Prod. Date</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="loadIn in loadIns">
+                <td>{{loadIn.sku.prod_id.brand_name}} {{loadIn.sku.sku_name}}</td>
+                <td>Bay {{loadIn.bay.bay_name}}</td>
+                <td>{{loadIn.cases}}</td>
+                <td>{{loadIn.prod_date}}</td>
+                <td><button ng-click="deleteLoadIn($index)">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
 
          <div ng-show="loadIns.length !== 0">
-              <button ng-click="confirm()" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
+              <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button button-small balanced pull-right liButton" style="">
 
               CONFIRM
               </button>

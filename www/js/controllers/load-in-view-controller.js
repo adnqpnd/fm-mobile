@@ -3,7 +3,7 @@
 angular.module('fMMobileApp')
 .controller('LoadInViewCtrl',['$scope','$http','$state','authService','httpHost','_',
   '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
-  $scope.loadOuts = {};
+  $scope.products = [];
   var loadInID = $stateParams.loadInID;
   var deliveryID = $stateParams.deliveryID;
   var customerID = null;
@@ -54,7 +54,7 @@ angular.module('fMMobileApp')
     $http.get(httpHost + '/bays/list').success( function (data) {
       if(data.length !== 0){
       $scope.bays = data;
-       $scope.loadIn.bay = $scope.bays[0].id;
+       $scope.loadIn.bay = $scope.bays[0];
       console.log("Bays:");
       console.log($scope.bays);
       }
@@ -83,25 +83,38 @@ angular.module('fMMobileApp')
 
    $scope.addLoadIn = function (loadIn){
     console.log(loadIn);
+     // var item = {
+     //   'sku_id': loadIn.product.sku_id.id,
+     //   'cases': loadIn.returns,
+     //   'bottlespercase': loadIn.product.sku_id.bottlespercase,
+     //   'bay_id': loadIn.bay,
+     //   'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
+     //   'lifespan': loadIn.product.sku_id.lifespan,
+     // }
+
      var item = {
-       'sku_id': loadIn.product.sku_id.id,
+       'sku': loadIn.product.sku_id,
        'cases': loadIn.returns,
        'bottlespercase': loadIn.product.sku_id.bottlespercase,
-       'bay_id': loadIn.bay,
+       'bay' : loadIn.bay,
        'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
-       'lifespan': loadIn.product.sku_id.lifespan,
-     }
+       'lifespan': loadIn.product.sku_id.lifespan
+     };
 
-     if( _.findIndex($scope.loadIns,{ 'sku_id': item.sku_id, 
-    'bay_id': item.bay_id, 'prod_date': item.prod_date}) === -1 ){
+     if( _.findIndex($scope.loadIns,{ 'sku': item.sku, 
+    'bay': item.bay, 'prod_date': item.prod_date}) === -1 ){
        $scope.loadIns.push(item);
        console.log($scope.loadIns);
     }else{
-      var index =  _.findIndex($scope.loadIns,{ 'sku_id': item.sku_id, 
-      'bay_id': item.bay_id, 'prod_date': item.prod_date});
+      var index =  _.findIndex($scope.loadIns,{ 'sku': item.sku, 
+    'bay': item.bay, 'prod_date': item.prod_date});
       console.log(index);
       $scope.loadIns[index].cases += item.cases;
     }
+
+    $scope.loadIn.product = $scope.deliveries[0].products[0];
+    $scope.loadIn.bay = $scope.bays[0];
+    $scope.loadIn.returns = null;
      
     
 
@@ -114,8 +127,22 @@ angular.module('fMMobileApp')
 
    $scope.confirm = function () {
 
+    for (var i = 0; i < $scope.loadIns.length; i++) {
+      var itemInfo = {
+       'sku_id': $scope.loadIns[i].sku.id,
+       'cases': $scope.loadIns[i].cases,
+       'bottlespercase': $scope.loadIns[i].bottlespercase,
+       'bay_id': $scope.loadIns[i].bay.id,
+       'prod_date': $scope.loadIns[i].prod_date,
+       'lifespan': $scope.loadIns[i].lifespan,
+      };
+      $scope.products.push(itemInfo);
+    }
+
+    console.log($scope.products);
+
     var finalLoadIn = {
-      'products' :  $scope.loadIns,
+      'products' : $scope.products,
       'loadout': loadOutID,
       'loadin_no': loadOutID,
       'customer': customerID
@@ -128,9 +155,11 @@ angular.module('fMMobileApp')
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
           $state.go('loadIn');
-          $scope.loadIn = {}
-          $scope.loadIn.product = $scope.loadOuts[0];
-          $scope.loadIn.bay = $scope.bays[0].id;
+          // $scope.loadIn = {};
+          // $scope.products = [];
+          // $scope.loadIns = [];
+          // $scope.loadIn.product = $scope.loadOuts[0];
+          // $scope.loadIn.bay = $scope.bays[0].id;
         $scope.$digest();
       }
     }); 
