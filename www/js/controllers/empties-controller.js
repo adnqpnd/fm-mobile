@@ -6,7 +6,7 @@ angular.module('FMApp.controllers')
   $scope.trucks = [];
 
   var getLoadOuts = function () {
-    $http.get(httpHost + '/load_out/list').success( function (data) {
+    $http.get(httpHost + '/load-out/list-in-progress').success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);
