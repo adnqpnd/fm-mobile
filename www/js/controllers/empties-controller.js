@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('EmptiesCtrl',['$scope','$http','$state','authService','httpHost','_',function($scope,$http,$state,authService,httpHost,_){
   $scope.loadOuts = [];
   $scope.trucks = [];

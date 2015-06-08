@@ -3,127 +3,140 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('fMMobileApp', ['ionic','angular-jwt','ngCordova'])
+// 'starter.controllers' is found in controllers.js
+angular.module('FMApp', ['ionic','FMApp.controllers','FMApp.services','FMApp.filters','ngCordova','angular-jwt'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if(window.StatusBar) {
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
   });
 })
+
+.constant('httpHost','http://localhost:1337')
 .constant('_', window._)
-.config(function($stateProvider,$urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
+  .state('app', {
+    url: "/app",
+    abstract: true,
+    templateUrl: "templates/menu.html",
+    controller: 'MainCtrl'
+  })
+  
   .state('login', {
-    url: '/',
-    templateUrl: 'templates/login.html',
+    url: "/login",
+    templateUrl: "templates/login.html",
     controller: 'LoginCtrl'
   })
-  .state('loadIn', {
-    url: '/loadIn',
-    templateUrl: 'templates/load-in.html'
+
+  .state('app.edit-account', {
+    url: "/edit-account",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/edit-account.html",
+        controller: "EditAccountCtrl"
+      }
+    }
   })
-  .state('tally', {
-    url: '/tally',
-    templateUrl: 'templates/tally.html'
+
+  .state('app.load-in', {
+    url: "/load-in",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/load-in.html",
+        controller: "LoadInCtrl"
+      }
+    }
   })
-  .state('empties', {
-    url: '/empties',
-    templateUrl: 'templates/empties.html'
+
+  .state('app.load-in-deliveries', {
+    url: "/load-in/:loadInID",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/load-in-deliveries.html",
+        controller: "LoadInDeliveriesCtrl"
+      }
+    }
   })
-  .state('editAccount', {
-    url: '/edit-account',
-    templateUrl: 'templates/edit-account.html',
+
+  .state('app.load-in-view', {
+    url: "/load-in/view/:deliveryID",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/load-in-view.html",
+        controller: "LoadInViewCtrl"
+      }
+    }
   })
-  .state('viewLoadIn', {
-    // url: '/loadIn/:loadInID',
-    url: '/loadIn/:loadInID',
-    templateUrl: 'templates/load-in-view.html'
+
+  .state('app.tally', {
+    url: "/tally",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/tally.html",
+        controller: "TallyCtrl"
+      }
+    }
   })
-  .state('viewTally', {
-    // url: '/loadIn/:loadInID',
-    url: '/tally/:loadInID',
-    templateUrl: 'templates/tally-view.html'
+
+  .state('app.tally-view', {
+    url: "/tally/:loadInID",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/tally-view.html",
+        controller: "TallyViewCtrl"
+      }
+    }
   })
-  .state('viewEmpties', {
-    // url: '/loadIn/:loadInID',
-    url: '/empties/:loadInID',
-    templateUrl: 'templates/empties-view.html'
+
+  .state('app.empties', {
+      url: "/empties",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/empties.html",
+          controller: 'EmptiesCtrl'
+        }
+      }
   })
-  .state('returns', {
-    // url: '/loadIn/:loadInID',
-    url: '/returns/:deliveryID',
-    templateUrl: 'templates/returns.html',
-    controller: 'EmptiesViewCtrl'
+
+  .state('app.empties-deliveries', {
+      url: "/empties/:loadInID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/empties-deliveries.html",
+          controller: 'EmptiesDeliveriesCtrl'
+        }
+      }
   })
-  .state('loadInFinal', {
-    // url: '/loadIn/:loadInID',
-    url: '/loadInFinal/:deliveryID',
-    templateUrl: 'templates/load-in-final.html'
+
+  .state('app.empties-view', {
+      url: "/empties/view/:deliveryID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/empties-view.html",
+          controller: 'EmptiesViewCtrl'
+        }
+      }
   });
 
-  $urlRouterProvider.otherwise('/');
-})
-.constant('httpHost','http://localhost:1337')
-.controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
-  $ionicActionSheet,$state,$rootScope){
-   userService.getUser().success(function(data){
-    $scope.userId = data.id
-    $scope.userType =  data.type;
-    $scope.userFirstName = data.firstname;
-    $scope.userLastName = data.lastname;
-    $scope.userName = $scope.userFirstName + " " + $scope.userLastName;
-    console.log($scope.userName);
-   });
-
-   $rootScope.$on("firstName",function(){
-    console.log("Firstname");
-     $scope.userFirstName = userService.getFirstName();
-     console.log($scope.userFirstName);
-     $scope.$digest();
-  });
-  
-  $rootScope.$on("lastName",function(){
-    console.log("lastname");
-     $scope.userLastName = userService.getLastName();
-     console.log($scope.userLastName);
-     $scope.$digest();
-  });
-
-  $scope.socketOptions = function (method,url,headers,params) {
-    return {
-      method: method,
-      url: url,
-      headers: headers,
-      params: params
-    };
-  };
-
-  $scope.showSettings  = function () {
-    console.log("Show settings");
-    $ionicActionSheet.show({
-     buttons: [
-       { text: 'Edit Account'},
-       {text: 'Log Out'}
-     ],
-     titleText: 'SETTINGS',
-     cancelText: 'Cancel',
-     buttonClicked: function(index) {
-       if(index === 0){
-         $state.go('editAccount');
-       }else{
-         authService.logout();
-         $state.go('login');
-       }
-     }
-   });
-  };
-
-}]);
-
+  // .state('app.single', {
+  //   url: "/playlists/:playlistId",
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: "templates/playlist.html",
+  //       controller: 'PlaylistCtrl'
+  //     }
+  //   }
+  // });
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/login');
+});

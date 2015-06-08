@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('LoginCtrl',['$scope','$http','$state','authService','userService',function($scope,$http,$state,authService,userService){
   $scope.error ='';
   $scope.errorMessage = false;
@@ -21,7 +21,7 @@ angular.module('fMMobileApp')
         if(status.code === 1) {
           authService.setToken(data.token);
          userService.getUser().success(function (data) {
-           $state.go('loadIn');  
+           $state.go('app.load-in');  
          });   
         }else{
           // $scope.error = status.message;

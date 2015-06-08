@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('TallyViewCtrl',['$scope','$http','$state','authService','httpHost','_',
   '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
   $scope.currentLoadOut = {};

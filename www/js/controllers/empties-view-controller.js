@@ -1,26 +1,14 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('EmptiesViewCtrl',['$scope','$http','$state','authService','httpHost','_',
   '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
   $scope.deliveries = [];
   $scope.returns = [];
   $scope.empties = {};
   $scope.empties.deposit = 0;
-  var loadInID = $stateParams.loadInID;
   var deliveryID = $stateParams.deliveryID;
   
-  var getDeliveries = function () {
-    $http.get(httpHost + "/delivery/list?loadout="+ loadInID).success( function (data) {
-      $scope.deliveries = data;
-        console.log("Delivery Transaction:");
-        console.log($scope.deliveries);
-        console.log(loadInID);
-    }).error(function (err) {
-      console.log(err);
-    });
-  };
- 
   var getDeliverySelected = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
       $scope.deliveries = data;
@@ -33,11 +21,9 @@ angular.module('fMMobileApp')
   };
 
 
-  if(loadInID){
-    getDeliveries();
-  }else{
-    getDeliverySelected();
-  }
+
+  getDeliverySelected();
+
   
     $scope.submit = function (returns) {
     console.log($scope.deliveries);

@@ -1,30 +1,17 @@
 'use strict';
 
-angular.module('fMMobileApp')
-.controller('LoadInViewCtrl',['$scope','$http','$state','authService','httpHost','_',
-  '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,_,$stateParams,$timeout,$filter,$cordovaDatePicker){
+angular.module('FMApp.controllers')
+.controller('LoadInViewCtrl',['$scope','$http','$state','authService','httpHost',
+  '$stateParams','$timeout','$filter','$cordovaDatePicker',function($scope,$http,$state,authService,httpHost,$stateParams,$timeout,$filter,$cordovaDatePicker){
   $scope.products = [];
-  var loadInID = $stateParams.loadInID;
   var deliveryID = $stateParams.deliveryID;
   var customerID = null;
   var loadOutID = null;
-  $scope.deliveries = [];
   $scope.bays = [];
   $scope.loadIn = {};
   $scope.loadIns = [];
   
 
-   var getDeliveries = function () {
-    $http.get(httpHost + "/delivery/list?loadout="+ loadInID).success( function (data) {
-      $scope.deliveries = data;
-        console.log("Delivery Transaction:");
-        console.log($scope.deliveries);
-        console.log(loadInID);
-    }).error(function (err) {
-      console.log(err);
-    });
-  };
-  
   var getLoadOuts = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
       $scope.deliveries = data;
@@ -40,16 +27,6 @@ angular.module('fMMobileApp')
     });
   };
 
-  var getLoadOutNumber = function () {
-    $http.get(httpHost + "/delivery_transactions/"+ deliveryID).success( function (data) {
-      loadOutID = data.loadout_id.id;
-      console.log("Load Out Number");
-      console.log(loadOutID);
-    }).error(function (err) {
-      console.log(err);
-    }); 
-  }
-
   var getBays = function () {
     $http.get(httpHost + '/bays/list').success( function (data) {
       if(data.length !== 0){
@@ -64,13 +41,20 @@ angular.module('fMMobileApp')
 
   };
 
-  if(loadInID){
-    getDeliveries();
-  }else{
-    getLoadOuts();
-    getLoadOutNumber();
-    getBays();
+  var getLoadOutNumber = function () {
+    $http.get(httpHost + "/delivery_transactions/"+ deliveryID).success( function (data) {
+      loadOutID = data.loadout_id.id;
+      console.log("Load Out Number");
+      console.log(loadOutID);
+    }).error(function (err) {
+      console.log(err);
+    }); 
   }
+
+
+    getLoadOuts();
+    getBays();
+    getLoadOutNumber();
 
 
    $scope.bayName = function (bay) {

@@ -1,13 +1,6 @@
-<div ng-controller="MainCtrl" class=" responsive-sm responsive-md ">
-">
-<div ng-controller="LoadInCtrl">
-<ion-header-bar align-title="left" class="bar-positive">
-  <h1 class="title" ><img src="img/ico/android-icon-48x48.png" class="imgLogo">LOAD IN </h1>
-    <button ng-click="showSettings()"class="button"> <i class="icon ion-person"></i>&nbsp; {{userFirstName}} {{userLastName}}</button>
-</ion-header-bar>
-
-<ion-content>
-  <div class="list" ng-repeat = "truck in trucks">
+<ion-view view-title="Load In">
+  <ion-content>
+    <div class="list" ng-repeat = "truck in trucks">
 
      <div class="item item-divider">
        {{truckName(truck.id)}}
@@ -17,11 +10,11 @@
 
        <div class="row">
          <label class="col col-60">
-              {{truckName(loadOut.truck_id)}} Load Out #{{loadOut.loadout_number}}
+             Load Out #{{loadOut.loadout_number}}
           </label>
      </div>
             <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/loadIn/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
+              <a class="button calm pull-right button-outline button-calm" href="#/app/load-in/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
               VIEW
               </a>
 
@@ -31,21 +24,5 @@
                </div>
         </div>
       </div>
-
-          <ion-tabs class="tabs-icon-top tabs-positive">
-
-        <ion-tab title="Load In" icon="ion-ios-information" ui-sref="loadIn">
-        </ion-tab>
-
-        <ion-tab title="Tally" icon="ion-ios-world" ui-sref="tally">
-        </ion-tab>
-
-        <ion-tab title="Empties" icon="ion-ios-world" ui-sref="empties">
-        </ion-tab>
-
-      </ion-tabs>
-
-
-</ion-content>
-</div>
-</div>
+  </ion-content>
+</ion-view>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('EditAccountCtrl',['$scope','$http','$state','authService','userService','httpHost',function($scope,$http,$state,authService,
   userService,httpHost){
   $scope.editForm = 0;

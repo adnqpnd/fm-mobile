@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fMMobileApp')
+angular.module('FMApp.controllers')
 .controller('LoadInCtrl',['$scope','$http','$state','authService','httpHost','_',function($scope,$http,$state,authService,httpHost,_){
   $scope.loadOuts = [];
   $scope.trucks = [];
@@ -72,6 +72,39 @@ angular.module('fMMobileApp')
       var index = _.findIndex($scope.loadOuts,{'id': msg.data.id});
       $scope.loadOuts[index] = msg.data;
       $scope.$digest();
+    }
+
+    switch (msg.verb) {
+      case "created": 
+        console.log("LoadOut Created");
+        $scope.loadOuts.push(msg.data);
+        $scope.$digest();
+        break;
+      case "updated":
+        console.log("LoadOut Updated");
+        var index = _.findIndex($scope.loadOuts,{'id': msg.data.id});
+        console.log(index);
+        $scope.loadOuts[index] = msg.data;
+        $scope.$digest();
+        break;
+      case "destroyed":
+        console.log("Employee Deleted");
+        console.log(msg.data[0].emp_id);
+        var index = _.findIndex($scope.employees,{'id': msg.data[0].emp_id});
+        console.log(index);
+        $scope.employees.splice(index,1);
+        $scope.employees =  $scope.sortData($scope.employees,'emp_fname');
+        $scope.user.fullname = $scope.employees[0];
+        if($scope.employees.length === 0){
+          $scope.noEmployees = true;
+        }
+        $scope.$digest();
+        break;
+      case "confirmed":
+        console.log("LoadOut Confirmed");
+        var index = _.findIndex($scope.loadOuts,{'id': msg.data.id});
+        $scope.loadOuts[index] = msg.data;
+        $scope.$digest();
     }
 
   });
