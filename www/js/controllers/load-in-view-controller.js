@@ -129,7 +129,8 @@ angular.module('FMApp.controllers')
       'products' : $scope.products,
       'loadout': loadOutID,
       'loadin_no': loadOutID,
-      'customer_id': customerID
+      'customer_id': customerID,
+      'delivery': deliveryID
      }
      console.log(finalLoadIn);
 
