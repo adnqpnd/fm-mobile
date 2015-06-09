@@ -18,5 +18,20 @@ angular.module('FMApp.controllers')
   };
 
   getDeliveries();
+
+  $scope.noLoadIn = function (deliveryId){
+    console.log(deliveryId);
+    var noLoadIn = {
+      "loadout": loadInID,
+      "delivery": deliveryId
+    };
+    io.socket.request($scope.socketOptions('post','/load-in/no-loadin',{"Authorization": "Bearer " + authService.getToken()},noLoadIn), function (body, JWR) {
+      console.log('Sails responded with post bay: ', body);
+      console.log('and with status code: ', JWR.statusCode);
+      if(JWR.statusCode === 200){
+        $scope.$digest();
+      }
+    }); 
+  }
   
 }]);
