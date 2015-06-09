@@ -11,15 +11,19 @@
              <label class="col col-10">Product:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="loadIn.product" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
+                <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
                 </select>
             </div>
 
-              <label class="col col-10">Bay:</label>
+              <label class="col col-10">Line:</label>
 
-            <div class="col col-40">
+            <div class="col col-40" ng-hide="noBays">
                 <select class = "form-control" ng-model="loadIn.bay" ng-options="bay as bayName(bay) for bay in bays" required>
                 </select>
+            </div>
+
+            <div ng-show="noBays" class="col col-40">
+                No Line Available
             </div>
         
           &nbsp; &nbsp;

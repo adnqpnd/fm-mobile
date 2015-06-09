@@ -10,12 +10,14 @@ angular.module('FMApp.controllers')
   $scope.bays = [];
   $scope.loadIn = {};
   $scope.loadIns = [];
+  $scope.noBays = false;
   
 
   var getLoadOuts = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
       $scope.deliveries = data;
       $scope.loadIn.product = $scope.deliveries[0].products[0];
+      $scope.getBays($scope.loadIn.product);
       customerID = $scope.deliveries[0].customer_id.id;
         console.log("Delivery Transaction Selected:");
         console.log($scope.deliveries);
@@ -27,18 +29,37 @@ angular.module('FMApp.controllers')
     });
   };
 
-  var getBays = function () {
-    $http.get(httpHost + '/bays/list').success( function (data) {
+  // var getBays = function () {
+  //   $http.get(httpHost + '/bays/list').success( function (data) {
+  //     if(data.length !== 0){
+  //     $scope.bays = data;
+  //      $scope.loadIn.bay = $scope.bays[0];
+  //     console.log("Bays:");
+  //     console.log($scope.bays);
+  //     }
+  //   }).error(function (err) {
+  //     console.log(err);
+  //   });
+
+  // };
+
+  $scope.getBays = function (sku){
+    console.log(sku.id);
+    console.log("Get Bays");
+     $http.get(httpHost + '/bays/list/sku-lines?id=' + sku.id).success( function (data) {
+      console.log(data);
       if(data.length !== 0){
-      $scope.bays = data;
-       $scope.loadIn.bay = $scope.bays[0];
+      $scope.bays = $scope.sortData(data,'bay_name');
+      $scope.loadIn.bay = $scope.bays[0];        
       console.log("Bays:");
       console.log($scope.bays);
+        $scope.noBays =false;
+      }else{
+        $scope.noBays = true;
       }
     }).error(function (err) {
-      console.log(err);
+      $scope.checkError(err);
     });
-
   };
 
   var getLoadOutNumber = function () {
