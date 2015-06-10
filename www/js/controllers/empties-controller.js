@@ -4,9 +4,10 @@ angular.module('FMApp.controllers')
 .controller('EmptiesCtrl',['$scope','$http','$state','authService','httpHost','_',function($scope,$http,$state,authService,httpHost,_){
   $scope.loadOuts = [];
   $scope.trucks = [];
+  $scope.today = new Date();
 
   var getLoadOuts = function () {
-    $http.get(httpHost + '/load-out/list-in-progress').success( function (data) {
+    $http.get(httpHost + '/load-out/complete-loadouts?date=' + $scope.formatDate($scope.today)).success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);

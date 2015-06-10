@@ -2,8 +2,8 @@
 
 angular.module('FMApp.controllers', [])
 
-.controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope', function($scope,userService,authService,
-  $ionicActionSheet,$state,$rootScope){
+.controller('MainCtrl',['$scope','userService','authService','$ionicActionSheet','$state','$rootScope','$filter'
+  ,function($scope,userService,authService,$ionicActionSheet,$state,$rootScope,$filter){
    userService.getUser().success(function(data){
     $scope.userId = data.id
     $scope.userType =  data.type;
@@ -34,6 +34,10 @@ angular.module('FMApp.controllers', [])
       headers: headers,
       params: params
     };
+  };
+
+  $scope.formatDate = function (passedDate) {
+    return $filter('date')(passedDate,'yyyy-MM-dd');
   };
 
   $scope.logout =function () {
