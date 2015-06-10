@@ -52,7 +52,7 @@ angular.module('FMApp.controllers')
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
-          $state.go('empties');
+          $state.go('app.empties');
           $scope.returns = {};
           $scope.empties.deposit = 0;
         $scope.$digest();
