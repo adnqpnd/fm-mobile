@@ -21,7 +21,7 @@ angular.module('FMApp.controllers')
         if(status.code === 1) {
           authService.setToken(data.token);
          userService.getUser().success(function (data) {
-           $state.go('app.load-in');  
+           $state.go('app.tally');  
          });   
         }else{
           // $scope.error = status.message;
