@@ -4,9 +4,13 @@ angular.module('FMApp.controllers')
 .controller('TallyCtrl',['$scope','$http','$state','authService','httpHost','_',function($scope,$http,$state,authService,httpHost,_){
   $scope.loadOuts = [];
   $scope.trucks = [];
+  $scope.today = new Date();
+  $scope.today.setDate($scope.today.getDate() + 1);
+  $scope.formatToday =  $scope.formatDate($scope.today);
+  console.log($scope.formatToday);
 
   var getLoadOuts = function () {
-    $http.get(httpHost + '/load_out/list').success( function (data) {
+    $http.get(httpHost + '/load_out/list?date=' + $scope.formatToday).success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);
