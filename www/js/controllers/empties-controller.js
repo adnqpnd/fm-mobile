@@ -5,6 +5,7 @@ angular.module('FMApp.controllers')
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
+  $scope.today.setDate($scope.today.getDate() + 1);
   $scope.formatToday =  $scope.formatDate($scope.today);
   console.log($scope.formatToday);
 

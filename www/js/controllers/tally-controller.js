@@ -34,6 +34,23 @@ angular.module('FMApp.controllers')
     });
   }
 
+  $scope.confirmLoadout =  function(loadOut) {
+    var loadOutInfo = {
+      "loadout_id": loadOut.id,
+      "truck_id": loadOut.truck_id,
+      "delivery_date": loadOut.date_created
+    };
+
+    console.log(loadOutInfo);
+
+    io.socket.request($scope.socketOptions('post','/load-out/confirm',{"Authorization": "Bearer " + authService.getToken()},loadOutInfo), function (body, JWR) {
+      console.log('Sails responded with post bay: ', body);
+      console.log('and with status code: ', JWR.statusCode);
+      if(JWR.statusCode === 200){
+      }
+    }); 
+  };
+
   getLoadOuts();
   getTrucks();
 

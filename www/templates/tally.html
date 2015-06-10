@@ -13,11 +13,21 @@
              Load Out #{{loadOut.loadout_number}}
           </label>
      </div>
-            <div class="col col-40">
+            <!-- <div class="col col-40">
               <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}">
               VIEW
               </a>
+               </div> -->
+           <div class="col col-40">
+              <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
+              VIEW
+              </a>
+
+               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
+                    CONFIRM
+               </button>
                </div>
+
         </div>
       </div>
 
