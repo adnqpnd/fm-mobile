@@ -40,6 +40,11 @@ angular.module('FMApp.controllers', [])
     return $filter('date')(passedDate,'yyyy-MM-dd');
   };
 
+  $scope.sortData = function(data,predicate){
+    console.log("Data Sort");
+    return $filter('orderBy')(data,predicate);
+  };
+
   $scope.logout =function () {
     authService.logout();
     $state.go('login');

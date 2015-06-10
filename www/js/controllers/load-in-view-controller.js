@@ -44,9 +44,8 @@ angular.module('FMApp.controllers')
   // };
 
   $scope.getBays = function (sku){
-    console.log(sku.id);
     console.log("Get Bays");
-     $http.get(httpHost + '/bays/list/sku-lines?id=' + sku.id).success( function (data) {
+     $http.get(httpHost + '/bays/list/sku-lines?id=' + sku.sku_id.id).success( function (data) {
       console.log(data);
       if(data.length !== 0){
       $scope.bays = $scope.sortData(data,'bay_name');
@@ -55,6 +54,7 @@ angular.module('FMApp.controllers')
       console.log($scope.bays);
         $scope.noBays =false;
       }else{
+        console.log("No Bays");
         $scope.noBays = true;
       }
     }).error(function (err) {
@@ -170,6 +170,64 @@ angular.module('FMApp.controllers')
     }); 
 
    };
+
+
+
+    io.socket.on('bays', function(msg){
+    console.log("Message Verb: " + msg.verb);
+    console.log("Message Data :");
+    console.log(msg.data);
+    
+    switch (msg.verb) {
+      case "created": 
+          console.log($scope.loadIn.product.sku_id.id);
+          console.log(msg.data.sku_id.id);
+          if($scope.loadIn.product.sku_id.id === msg.data.sku_id.id){
+            console.log("SKU");
+            $scope.bays.push(msg.data);
+            $scope.bays = $scope.sortData($scope.bays,'bay_name');
+            $scope.loadIn.bay = $scope.bays[0];
+            if($scope.noBays === true){
+              $scope.noBays = false;
+            }
+          }
+        $scope.$digest();
+        break;
+      case "updated":
+        console.log("Bay Updated");
+        console.log($scope.loadIn.product.sku_id.id);
+        console.log(msg.data.sku_id.id);
+        if($scope.loadIn.product.sku_id.id === msg.data.sku_id.id){
+            console.log("sku match");
+            var index = _.findIndex($scope.bays,{'id': msg.data.id});
+            console.log(index);
+            $scope.bays[index] = msg.data;
+            $scope.bays = $scope.sortData($scope.bays,'bay_name');
+            $scope.loadIn.bay = $scope.bays[0];
+        }
+        $scope.$digest();
+        break;
+      case "destroyed":
+        console.log("Bay Deleted");
+        console.log($scope.loadIn.product.sku_id.id);
+        console.log(msg.data[0].sku_id.id);
+        if($scope.loadIn.product.sku_id.id === msg.data[0].sku_id){
+            console.log("sku match");
+            var index = _.findIndex($scope.bays,{'id': msg.data[0].bay_id});
+            $scope.bays.splice(index,1);
+            if($scope.bays.length === 0){
+              $scope.noBays = true;
+            }else{
+              $scope.bays = $scope.sortData($scope.bays,'bay_name');
+              $scope.loadIn.bay = $scope.bays[0];
+            }
+
+        }
+        $scope.$digest();
+
+    }
+
+  });
   
 
   
