@@ -5,9 +5,11 @@ angular.module('FMApp.controllers')
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
+  $scope.formatToday =  $scope.formatDate($scope.today);
+  console.log($scope.formatToday);
 
   var getLoadOuts = function () {
-    $http.get(httpHost + '/load-out/complete-loadouts?date=' + $scope.formatDate($scope.today)).success( function (data) {
+    $http.get(httpHost + '/load-out/complete-loadouts?date=' + $scope.formatToday).success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);
