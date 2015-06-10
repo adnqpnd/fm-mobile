@@ -74,7 +74,6 @@ angular.module('FMApp.controllers')
 
 
     getLoadOuts();
-    getBays();
     getLoadOutNumber();
 
 
