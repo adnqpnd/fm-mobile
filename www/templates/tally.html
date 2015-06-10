@@ -19,11 +19,11 @@
               </a>
                </div> -->
            <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}" ng-show="loadOut.status !== 'Pending'">
+              <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}">
               VIEW
               </a>
 
-               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)" ng-hide="loadOut.status ===confirmed">
+               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)">
                     CONFIRM
                </button>
                </div>
