@@ -6,7 +6,7 @@
        {{truckName(truck.id)}}
      </div>
 
-     <div class="item" ng-repeat="loadOut in loadOuts | truckFilter: truck.id | filter:'In Progress'">
+     <div class="item" ng-repeat="loadOut in loadOuts | truckFilter: truck.id">
 
        <div class="row">
          <label class="col col-60">
