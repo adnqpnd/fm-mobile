@@ -1,1 +1,189 @@
 /* Empty. Add your own CSS if you like */
+
+/*-- body background --*/
+
+body {
+  background-image: url("../../img/fmbg.png") !important;
+  background-color: #a5dde4;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+
+  color: #000000;
+}
+
+.login {
+  background-color: transparent;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
+.card {
+  margin: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #202020;
+  border-radius: 10px;
+}
+
+.darkbg {
+  background-color: #6fa4ab !important;
+}
+
+.lightbg {
+  background-color: #518413 !important;
+}
+
+.transparent {
+  background-color: transparent !important;
+}
+
+.item {
+  margin-top: 8px;
+  background-color: #5d8c92;
+  border: 0px;
+  border-radius: 0px;
+  padding: 10px;
+}
+
+.itemedit {
+  margin-top: 8px;
+  background-color: #fff;
+  border: 0px;
+  border-radius: 0px;
+  padding: 10px;
+}
+
+.item-icon-left {
+  background-color: #fff;
+  padding-left: 65px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px !important;
+}
+
+.item-icon-left:hover {
+  background-color: #5d8c92;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: 1s;
+}
+
+.icon {
+  padding-left: 15px;
+}
+
+.list {
+  background-color: transparent;
+  color: #000000;
+}
+
+ .bar-positive {
+  background-color: #000 !important;
+  text-transform: uppercase;
+}
+
+h2.title {
+  font-size: 180% !important;
+  background-color: transparent !important;
+  text-transform: uppercase;
+  color: #fff !important;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 10px;
+  margin: 0px;
+
+}
+
+h1.title {
+  color: #fff;
+}
+
+.lightfont {
+  color: #fff !important;
+}
+
+.darkfont {
+  color: #202020 !important;
+}
+
+
+.button-positive {
+    border-radius: 50px;
+  border: 0px solid #202020; 
+  background-color: #6fa4ab !important;
+}
+
+.button-positive:hover {
+  border-radius: 50px;
+  border: 0px solid #000000; 
+  background-color: #5d8c92 !important;
+}
+
+.button-edit {
+  border-radius: 30px;
+  border: 0px solid #202020; 
+  background-color: #6fa4ab !important;
+  padding-right: 15px;
+}
+
+.button-edit:hover {
+  transition:1s;
+  color: #fff;
+  border-radius: 30px;
+  border: 0px solid #202020; 
+  background-color: #5d8c92 !important;
+}
+
+.button-sc {
+  border-radius: 20px;
+  border: 0px solid #202020; 
+  background-color: #6fa4ab !important;
+  padding-right: 15px;
+}
+
+.button-sc:hover {
+  transition:1s;
+  color: #fff;
+  border-radius: 20px;
+  border: 0px solid #202020; 
+  background-color: #5d8c92 !important;
+}
+
+input {
+  background-color: #6fa4ab !important;
+    border-radius: 30px;
+    padding-left: 15px !important;
+      transition:1s;
+}
+
+input:focus {
+  color: #000;
+  border-radius: 30px;
+  background-color: #e1e1e1 !important;
+  padding-left: 10px;
+      transition:1s;
+}
+
+input:hover {
+  color: #000;
+  border-radius: 30px;
+  background-color: #e1e1e1 !important;
+  padding-left: 10px;
+      transition:1s;
+}
+
+.pane      {
+  background-image: url("../../img/fmbg.png") !important;
+  background-color: #a5dde4;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+.responsiveimg {
+  max-width: 100% !important;
+  height: auto !important;
+}

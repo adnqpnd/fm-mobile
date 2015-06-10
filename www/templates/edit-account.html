@@ -2,11 +2,11 @@
   <ion-content>
         <div class="card">
       <div class="item item-divider">
-       <i class="icon ion-edit"></i>&nbsp;Edit Account
+       <i class="icon ion-edit"></i>&nbsp;&nbsp;Edit Account Information
       </div>
 
       <!-- username -->
-      <div class="item item-text-wrap ">
+      <div class="itemedit item-text-wrap">
 
         <div class="list row" ng-hide="editForm === 1">
         <label class = "col col-20">Username:</label
@@ -15,7 +15,7 @@
             {{user.username}}
          </div>
        
-            <button class="button button-small button-clear button-calm" ng-click="showEditForm(1)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+            <button class="button button-small button-edit" ng-click="showEditForm(1)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
       
         </div>
 
@@ -26,8 +26,8 @@
             <input class="form-control" type="text" ng-model="userEdit.username" value="{{user.username}}">
         </div>
 
-        <button class="button button-small  button-clear button-calm " ng-click="editUser(userEdit)">Save</button>&nbsp;
-        <button class="button button-small button-clear button-stable" ng-click="showEditForm(0)">Cancel</button>
+        <button class="button button-small button-clear" ng-click="editUser(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-clear" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
     
     <!-- first name -->
@@ -38,7 +38,7 @@
             {{user.firstname}}
         </div>
 
-        <button class="button button-small  button-clear button-calm" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+        <button class="button button-small button-edit" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
     <div class="list row" ng-show="editForm === 3">
@@ -48,8 +48,8 @@
             <input class="form-control" type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
         </div>
 
-        <button class="button button-small button-clear button-calm t" ng-click="editFirstname(userEdit)">Save</button>&nbsp;
-        <button class="button button-small button-clear button-stable" ng-click="showEditForm(0)">Cancel</button>
+        <button class="button button-small button-edit" ng-click="editFirstname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-edit" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
 
     <!-- last name -->
@@ -60,7 +60,7 @@
             {{user.lastname}}
         </div>
 
-        <button class="button button-small  button-clear button-calm" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+        <button class="button button-small button-edit" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
     <div class=" list row" ng-show="editForm === 4">
@@ -70,8 +70,8 @@
             <input  class="form-control" type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
         </div>
 
-        <button class="button button-small button-clear button-calm " ng-click="editLastname(userEdit)">Save</button>&nbsp;
-        <button class="button button-small button-clear button-stable" ng-click="showEditForm(0)">Cancel</button>
+        <button class="button button-small button-edit" ng-click="editLastname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-edit" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
 
     <!-- password -->
@@ -82,7 +82,7 @@
         </div>
 
 
-              <button class="button button-small  button-clear button-calm" ng-click="showEditForm(2)"><i class="icon ion-edit"></i>&nbsp; <EM></EM>Edit</button>
+              <button class="button button-small button-edit" ng-click="showEditForm(2)"><i class="icon ion-edit"></i>&nbsp; <EM></EM>Edit</button>
     
       
     </div>
@@ -108,8 +108,7 @@
 
             <div class="row">
                 <label align="right" class = "col col-20">New:</label>
-
-                <div  class="col col-50" align="center" >
+                <div  class="col col-50">
                     <input class="form-control"  type="password" ng-model="password.new_password" required>
                 </div>
                  
@@ -125,9 +124,9 @@
 
             <div align="center"> 
                  
-            <button class="button button-small button-clear button-calm " type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
+            <button class="button button-small button-edit" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
 
-            <button class="button button-small button-clear button-stable" type="button" ng-click="showEditForm(0)">Cancel</button>
+            <button class="button button-small button-edit" type="button" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
             </div>
 
         </form>
