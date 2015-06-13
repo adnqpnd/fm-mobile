@@ -9,7 +9,7 @@ angular.module("FMApp.filters",[])
         if (angular.isArray(data)) {
             var result = [];
             angular.forEach(data, function(item){
-              if (item.truck_id === id){
+              if (item.truck_id.id === id){
                  result.push(item);
               }
             });
