@@ -13,6 +13,8 @@ angular.module('FMApp.controllers', [])
     console.log($scope.userName);
    });
 
+   $scope.dateToday = new Date();
+
    $rootScope.$on("firstName",function(){
     console.log("Firstname");
      $scope.userFirstName = userService.getFirstName();

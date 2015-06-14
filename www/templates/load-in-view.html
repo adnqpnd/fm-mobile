@@ -10,7 +10,7 @@
              <label class="col col-10">Product:</label>
 
             <div class="col col-40">
-                <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
+                <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product);getProdDate(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
                 </select>
             </div>
 
@@ -38,7 +38,7 @@
             <label class="col col-25">Production Date:</label>
 
             <div class="col col-75">
-               <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
+               <input class ="form-control" type="date" max="{{formatDate(dateToday)}}" ng-model="loadIn.prodDate" required>
             </div>
           </div>   
 
@@ -51,6 +51,8 @@
 
              </form>  
       </div>
+
+          <h1>Total Amount {{totalAmount}}</h1>
 
           <table>
             <thead>
@@ -66,7 +68,7 @@
                 <td>Bay {{loadIn.bay.bay_name}}</td>
                 <td>{{loadIn.cases}}</td>
                 <td>{{loadIn.prod_date}}</td>
-                <td><button ng-click="deleteLoadIn($index)">Delete</button></td>
+                <td><button ng-click="deleteLoadIn($index,loadIn)">Delete</button></td>
               </tr>
             </tbody>
           </table>

@@ -11,6 +11,7 @@ angular.module('FMApp.controllers')
   $scope.loadIn = {};
   $scope.loadIns = [];
   $scope.noBays = false;
+  $scope.totalAmount = 0;
   
 
   var getLoadOuts = function () {
@@ -19,15 +20,21 @@ angular.module('FMApp.controllers')
       $scope.loadIn.product = $scope.deliveries[0].products[0];
       $scope.getBays($scope.loadIn.product);
       customerID = $scope.deliveries[0].customer_id.id;
-        console.log("Delivery Transaction Selected:");
-        console.log($scope.deliveries);
-        console.log(deliveryID);
-        console.log("Customer ID:");
-        console.log(customerID);
+      $scope.getProdDate($scope.loadIn.product);
     }).error(function (err) {
       console.log(err);
     });
   };
+
+  $scope.getProdDate = function (prod) {
+    if(prod.prod_date != null){
+      console.log("Have ProdDate");
+      $scope.loadIn.prodDate = $scope.loadIn.product.prod_date; 
+    }else{
+       console.log("Dont Have ProdDate");
+      $scope.loadIn.prodDate = new Date();
+    }
+  }
 
   // var getBays = function () {
   //   $http.get(httpHost + '/bays/list').success( function (data) {
@@ -101,19 +108,25 @@ angular.module('FMApp.controllers')
        'cases': loadIn.returns,
        'bottlespercase': loadIn.product.sku_id.bottlespercase,
        'bay' : loadIn.bay,
-       'prod_date': $filter('date')(loadIn.prodDate,'yyyy-MM-dd'),
-       'lifespan': loadIn.product.sku_id.lifespan
+       'prod_date': $scope.formatDate(loadIn.prodDate),
+       'lifespan': loadIn.product.sku_id.lifespan,
+       'amount': loadIn.returns * loadIn.product.sku_id.pricepercase
      };
+
+     console.log(loadIn.returns);
+     console.log(loadIn.product.sku_id.pricepercase);
 
      if( _.findIndex($scope.loadIns,{ 'sku': item.sku, 
     'bay': item.bay, 'prod_date': item.prod_date}) === -1 ){
        $scope.loadIns.push(item);
+       $scope.totalAmount += item.amount;
        console.log($scope.loadIns);
     }else{
       var index =  _.findIndex($scope.loadIns,{ 'sku': item.sku, 
     'bay': item.bay, 'prod_date': item.prod_date});
       console.log(index);
       $scope.loadIns[index].cases += item.cases;
+      $scope.totalAmount += item.amount;
     }
 
     $scope.loadIn.product = $scope.deliveries[0].products[0];
@@ -124,9 +137,11 @@ angular.module('FMApp.controllers')
 
    };
 
-   $scope.deleteLoadIn = function(index){
+   $scope.deleteLoadIn = function(index,loadIn){
      console.log(index);
      $scope.loadIns.splice(index,1);
+     $scope.totalAmount -= loadIn.amount;
+
    };
 
    $scope.confirm = function () {
@@ -150,7 +165,8 @@ angular.module('FMApp.controllers')
       'loadout': loadOutID,
       'loadin_no': loadOutID,
       'customer_id': customerID,
-      'delivery': deliveryID
+      'delivery': deliveryID,
+      'total_amount': $scope.totalAmount
      }
      console.log(finalLoadIn);
 
@@ -159,7 +175,7 @@ angular.module('FMApp.controllers')
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
-          $state.go('loadIn');
+          $state.go('app.loadIn');
           // $scope.loadIn = {};
           // $scope.products = [];
           // $scope.loadIns = [];
