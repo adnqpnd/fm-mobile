@@ -3,22 +3,16 @@
      <div class="list" ng-repeat = "delivery in deliveries">
 
      <div class="item item-divider">
-<<<<<<< HEAD
-       {{delivery.customer_id.establishment_name}}
-          <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" ng-hide="delivery.returns_id !== null" href="#/app/empties/view/{{delivery.id}}">
-=======
          <label class="col col-60 labelz" align="center">
              <h2>{{delivery.customer_id.establishment_name}}</h2>
           </label>
           <div class="col col-40" align="center">
-              <a class="button icon-left ion-search" href="#/app/empties/view/{{delivery.id}}">
->>>>>>> origin/master
+              <a class="button icon-left ion-search" ng-hide="delivery.returns_id !== null" href="#/app/empties/view/{{delivery.id}}">
               VIEW
               </a>
                </div>
-     </div>
 
         </div>
+      </div>
   </ion-content>
 </ion-view>
