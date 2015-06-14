@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('FMApp.controllers')
-.controller('LoadInCtrl',['$scope','$http','$state','authService','httpHost','_',function($scope,$http,$state,authService,httpHost,_){
+.controller('LoadInCtrl',['$scope','$http','$state','authService','httpHost','_','userService',function($scope,$http,$state,authService,httpHost,_,userService){
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
@@ -28,7 +28,8 @@ angular.module('FMApp.controllers')
   };
 
   var getTrucks = function () {
-    $http.get(httpHost + '/trucks').success( function (data) {
+    console.log(userService.getUserID());
+    $http.get(httpHost + '/trucks/employee-truck?user='+ userService.getUserID()).success( function (data) {
         $scope.trucks = data;
         console.log("Trucks:");
         console.log($scope.trucks);
