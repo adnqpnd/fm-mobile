@@ -9,7 +9,7 @@ angular.module('FMApp.controllers')
   console.log($scope.formatToday);
 
   var getLoadOuts = function () {
-    $http.get(httpHost + '/load-out/list-in-progress?date=' + $scope.formatToday).success( function (data) {
+    $http.get(httpHost + '/load-out/list-in-progress?date=' + $scope.formatToday + '&truck=' + $scope.trucks.id ).success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);
@@ -38,8 +38,9 @@ angular.module('FMApp.controllers')
     });
   }
 
-  getLoadOuts();
   getTrucks();
+  $timeout(getLoadOuts,3000);
+
 
   $scope.truckName = function (truck) {
     console.log(truck);
