@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('FMApp.controllers')
-.controller('LoadInCtrl',['$scope','$http','$state','authService','httpHost','_','userService',function($scope,$http,$state,authService,httpHost,_,userService){
+.controller('LoadInCtrl',['$scope','$http','$state','authService','httpHost','_','userService','$timeout',
+  function($scope,$http,$state,authService,httpHost,_,userService,$timeout){
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
