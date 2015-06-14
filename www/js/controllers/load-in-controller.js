@@ -45,8 +45,6 @@ angular.module('FMApp.controllers')
   });
 
 
-
-
   $scope.truckName = function (truck) {
     console.log(truck);
     var index = _.findIndex($scope.trucks, { 'id': truck });
