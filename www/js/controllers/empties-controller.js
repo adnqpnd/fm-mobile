@@ -29,7 +29,7 @@ angular.module('FMApp.controllers')
   };
 
   var getTrucks = function () {
-    $http.get(httpHost + '/trucks/employee-truck?user='+ userService.getUserID()).success( function (data) {
+    return $http.get(httpHost + '/trucks/employee-truck?user='+ userService.getUserID()).success( function (data) {
         $scope.trucks = data;
         console.log("Trucks:");
         console.log($scope.trucks);
@@ -38,8 +38,9 @@ angular.module('FMApp.controllers')
     });
   };
 
-   getTrucks();
-  $timeout(getLoadOuts,3000);
+  getTrucks().success(function(){
+    getLoadOuts();
+  });
 
   $scope.truckName = function (truck) {
     console.log(truck);
