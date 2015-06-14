@@ -27,9 +27,10 @@ angular.module('FMApp.controllers')
   };
 
   $scope.getProdDate = function (prod) {
+    console.log(prod);
     if(prod.prod_date != null){
       console.log("Have ProdDate");
-      $scope.loadIn.prodDate = $scope.loadIn.product.prod_date; 
+      $scope.loadIn.prodDate = new Date($scope.loadIn.product.prod_date); 
     }else{
        console.log("Dont Have ProdDate");
       $scope.loadIn.prodDate = new Date();
@@ -175,7 +176,7 @@ angular.module('FMApp.controllers')
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
         // $scope.bays.push(body);
-          $state.go('app.loadIn');
+          $state.go('app.load-in');
           // $scope.loadIn = {};
           // $scope.products = [];
           // $scope.loadIns = [];

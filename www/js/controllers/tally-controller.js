@@ -69,5 +69,21 @@ angular.module('FMApp.controllers')
     return "Truck #" + index;
   };
 
+  io.socket.on('loadout', function(msg){
+    console.log("Message Verb: " + msg.verb);
+    console.log("Message Data :");
+    console.log(msg.data);
+
+    if(msg.verb === "confirmed"){
+      console.log("confirmed");
+      console.log(msg.data[0].id);
+    var index = _.findIndex($scope.loadOuts, { 'id': msg.data[0].id });
+    $scope.loadOuts.splice(index,1);
+    }
+
+    $scope.$digest();
+
+  });
+
 
 }]);

@@ -5,7 +5,7 @@
      <div class="item item-divider">
        {{delivery.customer_id.establishment_name}}
           <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/app/empties/view/{{delivery.id}}">
+              <a class="button calm pull-right button-outline button-calm" ng-hide="delivery.returns_id !== null" href="#/app/empties/view/{{delivery.id}}">
               VIEW
               </a>
                </div>
