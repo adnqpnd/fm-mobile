@@ -37,7 +37,7 @@ angular.module('FMApp.controllers')
     }).error(function (err) {
       console.log(err);
     });
-  }
+  };
 
   $scope.confirmLoadout =  function(loadOut) {
     var loadOutInfo = {
@@ -58,7 +58,6 @@ angular.module('FMApp.controllers')
 
 
   getTrucks();
-
   $timeout(getLoadOuts,3000);
 
   $scope.truckName = function (truck) {
