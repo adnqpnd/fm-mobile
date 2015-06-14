@@ -43,8 +43,13 @@ body {
   margin-top: 8px;
   background-color: #5d8c92;
   border: 0px;
-  border-radius: 0px;
+  border-radius: 30px;
   padding: 10px;
+  margin: 10px;
+}
+
+.item-input {
+    border-radius: 30px !important;
 }
 
 .itemedit {
@@ -100,6 +105,34 @@ h2.title {
 
 h1.title {
   color: #fff;
+}
+
+h4.title {
+  margin: 0px;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-bottom: 2px #202020 solid;
+  font-weight: bold;
+}
+
+h5.title {
+  margin: 0px;
+  padding-left: 24px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+h6.title {
+  font: 12px Arial,Helvetica,Sans-serif;
+  font-size: 100%;
+  margin: 0px;
+  padding-left: 25px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  text-transform: uppercase; 
 }
 
 .lightfont {
@@ -186,4 +219,10 @@ input:hover {
 .responsiveimg {
   max-width: 100% !important;
   height: auto !important;
+}
+
+.labelz {
+  margin: 10px;
+  padding: 10px;
+
 }

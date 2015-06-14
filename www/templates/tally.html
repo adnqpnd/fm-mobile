@@ -5,8 +5,10 @@
       <div class="item" ng-repeat="loadOut in loadOuts">
 
        <div class="row">
-         <label class="col col-60">
-             Load Out #{{loadOut.loadout_number}}
+         <label class="col col-60 labelz" align="center">
+
+             <h2>Load Out #{{loadOut.loadout_number}}</h2>
+          
           </label>
        </div>
             <!-- <div class="col col-40">
@@ -14,13 +16,13 @@
               VIEW
               </a>
                </div> -->
-           <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}">
+           <div class="col col-40" align="center">
+              <a class="button icon-left ion-search" href="#/app/tally/{{loadOut.id}}">
               VIEW
               </a>
 
-               <button  ng-hide="loadOut.status !== 'Pending'" class="button calm pull-right  button-outline button-calm" ng-click="confirmLoadout(loadOut)">
-                    CONFIRM
+               <button  ng-hide="loadOut.status !== 'Pending'" class="button icon-left ion-checkmark" ng-click="confirmLoadout(loadOut)">
+               CONFIRM
                </button>
                </div>
 
