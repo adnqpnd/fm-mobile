@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('FMApp.controllers')
-.controller('TallyCtrl',['$scope','$http','$state','authService','httpHost','_','userService',function($scope,$http,$state,authService,httpHost,_,userService){
+.controller('TallyCtrl',['$scope','$http','$state','authService','httpHost','_','userService','$timeout',
+  function($scope,$http,$state,authService,httpHost,_,userService,$timeout){
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
@@ -57,7 +58,8 @@ angular.module('FMApp.controllers')
 
 
   getTrucks();
-  getLoadOuts();
+
+  $timeout(getLoadOuts,3000);
 
   $scope.truckName = function (truck) {
     console.log(truck);
