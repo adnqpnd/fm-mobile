@@ -4,15 +4,14 @@
      <div class="list" ng-repeat = "delivery in deliveries">
 
      <div class="item item-divider">
-       {{delivery.customer_id.establishment_name}}
-          <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#app/load-in/view/{{delivery.id}}">
+        <label class="col col-60 labelz" align="center">
+       <h2>{{delivery.customer_id.establishment_name}}</h2>
+     </label>
+          <div class="col col-40" align="center">
+              <a class="button icon-left ion-search" href="#app/load-in/view/{{delivery.id}}">
               VIEW
               </a>
-          </div>
-
-          <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" ng-click="noLoadIn(delivery.id)">
+              <a class="button icon-left ion-alert-circled" ng-click="noLoadIn(delivery.id)">
               NO LOAD IN
               </a>
           </div>
