@@ -5,18 +5,15 @@
 body {
   background-image: url("../../img/fmbg.png") !important;
   background-color: #a5dde4;
-  background-position: bottom center;
+  background-position: center center;
   background-repeat: no-repeat;
 
-  color: #000000 !important;
+  color: #6fa4ab !important;
 }
 
 .login {
   background-color: transparent;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 30px;
-  border-radius: 50px;
+
 }
 
 .card {
@@ -187,21 +184,23 @@ h6.title {
 }
 
 input {
-  background-color: #6fa4ab !important;
+  background-color: #e1e1e1 !important;
     border-radius: 30px;
-    padding-left: 15px !important;
+ padding-left: 15px !important;
       transition:1s;
 }
 
 input:focus {
+  font-weight: bold;
   color: #000;
   border-radius: 30px;
   background-color: #e1e1e1 !important;
-  padding-left: 10px;
+padding-left: 10px;
       transition:1s;
 }
 
 input:hover {
+  font-weight: bold;
   color: #000;
   border-radius: 30px;
   background-color: #e1e1e1 !important;
@@ -214,6 +213,8 @@ input:hover {
   background-color: #a5dde4;
   background-position: bottom center;
   background-repeat: no-repeat;
+
+  
 }
 
 .responsiveimg {
