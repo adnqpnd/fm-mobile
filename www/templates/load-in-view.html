@@ -1,22 +1,22 @@
 <ion-view view-title="Load In View">
   <ion-content class="darkbg transparent">
       <div class="card">
-           <div class="item item-divider">
+           <!--<div class="item item-divider">
             <h2>{{delivery.customer_id.establishment_name}}</h2>
-            </div>
+            </div>-->
       
           <form name="loadInViewForm" ng-submit="addLoadIn(loadIn)" novalidate>
-            <div class="row loadinContent">
-             <label class="col col-10">Product:</label>
+            <div class="list list-inset">
+             <label class="item item-input">Product:</label>
 
-            <div class="col col-40">
+            <div class="input-label">
                 <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product);getProdDate(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
                 </select>
             </div>
 
-              <label class="col col-10">Line:</label>
+              <label class="item item-input">Line:</label>
 
-            <div class="col col-40" ng-hide="noBays">
+            <div class="input-label" ng-hide="noBays">
                 <select class = "form-control" ng-model="loadIn.bay" ng-options="bay as bayName(bay) for bay in bays" required>
                 </select>
             </div>
@@ -24,37 +24,41 @@
             <div ng-show="noBays" class="col col-40">
                 No Line Available
             </div>
-        
-          &nbsp; &nbsp;
 
-            <label class="col col-10">Returns:</label>
+            &nbsp;
 
-            <div class="col col-40">
+            <label class="item item-input">Returns:</label>
+
+            <div class="input-label">
              <input class="form-control" type="number" ng-model="loadIn.returns" required>
             </div>
-          </div>
+          
 
-          <div class="row loadinContent">
-            <label class="col col-25">Production Date:</label>
+          
+            <label class="item item-input">Production Date:</label>
 
-            <div class="col col-75">
+            <div class="input-label">
                <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
             </div>
-          </div>   
-
-             <div>
-              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-small balanced pull-right liButton" style="">
-
+      
+          <div class="col col-40" align="center">
+              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button icon-left ion-plus">
               ADD
               </button>
-           </div> 
+          </div>
+
+          </div>
 
              </form>  
       </div>
 
-          <h1>Total Amount {{totalAmount}}</h1>
+      <div class="card space" align="center">
 
-          <table>
+      <label class="col col-60 labelz" align="center">
+       <h3>TOTAL AMOUNT: ₱{{totalAmount}}.00</h3>
+       </label>
+
+          <table class="table">
             <thead>
               <th>Product</th>
               <th>Bay</th>
@@ -73,11 +77,19 @@
             </tbody>
           </table>
 
-         <div ng-show="loadIns.length !== 0">
-              <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button button-small balanced pull-right liButton" style="">
+          &nbsp;
+          &nbsp;
+
+         <div ng-show="loadIns.length !== 0" class="col col-40" align="center">
+              <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button icon-left ion-checkmark" style="">
 
               CONFIRM
               </button>
            </div> 
+
+
+         </div>
+
+
   </ion-content>
 </ion-view>
