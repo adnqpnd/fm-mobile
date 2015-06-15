@@ -29,6 +29,7 @@ angular.module('FMApp.controllers')
       console.log('Sails responded with post bay: ', body);
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
+        $state.go('app.load-in');
         $scope.$digest();
       }
     }); 
