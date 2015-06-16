@@ -1,17 +1,15 @@
 <ion-view view-title="Load In">
   <ion-content>
-    <div class="list">
 
-     <div class="item" ng-repeat="loadOut in loadOuts">
+    <div class="card" ng-repeat="loadOut in loadOuts">
 
-       <div class="row">
-         <label class="col col-60 labelz" align="center">
+          <div class="bar bar-header bar-royal">
 
-             <h2>Load Out #{{loadOut.loadout_number}}</h2>
+            <h1 class="title"><i class="icon ion-ios-upload"></i>&nbsp;&nbsp;Load Out #{{loadOut.loadout_number}}</h1>
 
-          </label>
-     </div><!--button calm pull-right button-outline -->
-            <div class="col col-40" align="center">
+          </div><br><br>
+
+              <div class="col col-40" align="center">
               <a class="button icon-left ion-search" href="#/app/load-in/{{loadOut.id}}">
               VIEW
               </a>
@@ -21,6 +19,11 @@
                </button>
                </div> -->
         </div>
+
+
+        </div>
+
+
       </div>
   </ion-content>
 </ion-view>

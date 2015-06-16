@@ -1,20 +1,20 @@
 <ion-view view-title="Empties">
   <ion-content>
-    <div class="list">
+    
+     <div class="card" ng-repeat="loadOut in loadOuts">
 
-     <div class="item" ng-repeat="loadOut in loadOuts">
+           <div class="bar bar-header bar-royal">
 
-       <div class="row">
-         <label class="col col-60 labelz" align="center">
-             <h2>Load Out #{{loadOut.loadout_number}}</h2>
-          </label>
-     </div>
+            <h1 class="title"><i class="icon ion-document"></i>&nbsp;&nbsp;Load Out #{{loadOut.loadout_number}}</h1>
+
+          </div><br><br>
+
             <div class="col col-40" align="center">
               <a class="button icon-left ion-search" href="#/app/empties/{{loadOut.id}}">
               VIEW
               </a>
                </div>
         </div>
-      </div>
+
   </ion-content>
 </ion-view>

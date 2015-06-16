@@ -1,41 +1,41 @@
 
 <ion-view view-title="Empties View">
   <ion-content>
+
      <div class="card">
-           <div class="item item-divider">
-            <h2>   </h2>
-            </div>
+
 
         <form name="ReturnViewForm" ng-submit="submit(returns)" novalidate>
-          <div ng-repeat="delivery in deliveries">
-          <label class="col col-10">SKU Name: {{delivery.products[0].sku_id.prod_id.brand_name}} {{delivery.products[0].sku_id.sku_name}} {{delivery.products[0].sku_id.size}}
+          <div ng-repeat="delivery in deliveries" class="list list-inset">
+
+             <label class="item item-input">SKU Name: {{delivery.products[0].sku_id.prod_id.brand_name}} {{delivery.products[0].sku_id.sku_name}} {{delivery.products[0].sku_id.size}}
           </label>
 
-          <label class="col col-10">Bottles:</label>
+          <label class="item item-input">Bottles:</label>
 
-            <div class="col col-40">
+            <div class="input-label">
              <input class="form-control" type="number" ng-model="returns[$index].bottles" required>
             </div>
-          <label class="col col-10">Cases:</label>
+          <label class="item item-input">Cases:</label>
 
-            <div class="col col-40">
+            <div class="input-label">
              <input class="form-control" type="number" ng-model="returns[$index].cases" required>
             </div>
           </div>
 
-          <label class="col col-10">Deposit:</label>
+          <label class="item item-input">Deposit:</label>
 
-            <div class="col col-40">
+            <div class="input-label">
              <input class="form-control" type="number" ng-model="empties.deposit" required>
             </div>
 
 
-             <div>
-              <button type="submit" ng-disabled="ReturnViewForm.$invalid" class="button icon-left ion-checkmark" style="">
 
+          <div class="col col-40" align="center">
+              <button type="submit" ng-disabled="ReturnViewForm.$invalid" class="button icon-left ion-checkmark">
               SUBMIT
               </button>
-           </div> 
+          </div>
 
         </form>
     

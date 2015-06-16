@@ -1,21 +1,14 @@
 <ion-view view-title="Tally">
   <ion-content>
-     <div class="list">
+    
+     <div class="card" ng-repeat="loadOut in loadOuts">
 
-      <div class="item" ng-repeat="loadOut in loadOuts">
+           <div class="bar bar-header bar-royal">
 
-       <div class="row">
-         <label class="col col-60 labelz" align="center">
+            <h1 class="title"><i class="icon ion-document"></i>&nbsp;&nbsp;Load Out #{{loadOut.loadout_number}}</h1>
 
-             <h2>Load Out #{{loadOut.loadout_number}}</h2>
-          
-          </label>
-       </div>
-            <!-- <div class="col col-40">
-              <a class="button calm pull-right button-outline button-calm" href="#/app/tally/{{loadOut.id}}">
-              VIEW
-              </a>
-               </div> -->
+          </div><br><br>
+
            <div class="col col-40" align="center">
               <a class="button icon-left ion-search" href="#/app/tally/{{loadOut.id}}">
               VIEW
@@ -25,9 +18,7 @@
                CONFIRM
                </button>
                </div>
-
-        </div> 
-      </div>
+        </div>
 
   </ion-content>
 </ion-view>
