@@ -13,7 +13,6 @@ body {
 
 .login {
   background-color: transparent;
-
 }
 
 .card {
@@ -23,7 +22,11 @@ body {
   color: #000;
   /*box-shadow: 0px 0px 10px #666666;
     border-radius: 30px;*/
+}
 
+.responsiveimg {
+  width: auto !important;
+  height: auto !important;
 }
 
 .tally {
@@ -204,6 +207,20 @@ h6.title {
   background-color: #000 !important;
 }
 
+.button-login {
+  border-radius: 15px;
+  border: 0px solid #202020; 
+  background-color: #fff !important;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.button-login:hover {
+  font-weight: none !important;
+  color: #fff;
+  border: 0px solid #202020; 
+  background-color: #5d8c92 !important;
+}
 
 
 .button-sc {
