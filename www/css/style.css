@@ -19,10 +19,29 @@ body {
 .card {
   margin: 20px;
   padding: 10px;
-  background-color: #202020;
-  /*box-shadow: 0px 0px 10px #202020;*/
-  border-radius: 30px;
+  background-color: #808080;
+  color: #000;
+  /*box-shadow: 0px 0px 10px #666666;
+    border-radius: 30px;*/
+
 }
+
+.tally {
+  background-color: #99CC00 !important;
+  border-radius: 80px !important;
+}
+
+.loadin {
+  background-color: #FF9900 !important;
+  border-radius: 80px !important;
+}
+
+.empties {
+  background-color: #33CCFF !important;
+  border-radius: 80px !important;
+}
+
+
 
 .darkbg {
   background-color: #6fa4ab !important;
@@ -76,12 +95,11 @@ body {
 }
 
 .item-icon-left:hover {
-  background-color: #5d8c92;
-  color: #fff;
+  background-color: #5d8c92 !important;
+  color: #000;
   cursor: pointer;
   border: none;
   border-radius: 50px;
-  transition: 1s;
 }
 
 .icon {
@@ -100,14 +118,8 @@ body {
 
 h2.title {
   font-size: 180% !important;
-  background-color: transparent !important;
-  text-transform: uppercase;
-  color: #fff !important;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 10px;
-  margin: 0px;
-
+  background-color: transparent;
+  color: #fff;
 }
 
 h1.title {
@@ -166,17 +178,33 @@ h6.title {
 .button-edit {
   border-radius: 30px;
   border: 0px solid #202020; 
-  background-color: #6fa4ab !important;
+  background-color: #fff !important;
   padding-right: 15px;
 }
 
 .button-edit:hover {
-  transition:1s;
   color: #fff;
   border-radius: 30px;
   border: 0px solid #202020; 
-  background-color: #5d8c92 !important;
+  background-color: #000 !important;
 }
+
+
+.button-flat {
+  border-radius: 10px;
+  border: 0px solid #202020; 
+  background-color: #fff !important;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.button-flat:hover {
+  color: #fff;
+  border: 0px solid #202020; 
+  background-color: #000 !important;
+}
+
+
 
 .button-sc {
   border-radius: 20px;
@@ -186,7 +214,6 @@ h6.title {
 }
 
 .button-sc:hover {
-  transition:1s;
   color: #fff;
   border-radius: 20px;
   border: 0px solid #202020; 
@@ -194,28 +221,32 @@ h6.title {
 }
 
 input {
-  background-color: #e1e1e1 !important;
-    border-radius: 30px;
- padding-left: 15px !important;
-      transition:1s;
+  color: #202020;
+  background-color: #fff !important;
+  padding-left: 10px !important;
+  padding-right: 2px !important;
+  margin-right: 50px !important;
 }
 
 input:focus {
   font-weight: bold;
   color: #000;
-  border-radius: 30px;
-  background-color: #e1e1e1 !important;
-padding-left: 10px;
-      transition:1s;
+  background-color: #fff !important;
+
 }
 
 input:hover {
   font-weight: bold;
   color: #000;
-  border-radius: 30px;
-  background-color: #e1e1e1 !important;
-  padding-left: 10px;
-      transition:1s;
+  background-color: #fff !important;
+}
+
+.input-label {
+  padding-top: 15px !important;
+}
+
+.wf {
+  color: #fff !important;
 }
 
 .pane      {
@@ -242,13 +273,19 @@ input:hover {
 .table, table, th, head, tr, td {
   color: #fff;
   padding: 15px;
-  border: 3px solid #202020;
+  border: 3px solid #808080;
   text-align: left;
+      background-color: #202020;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
 }
 
 th {
-    background-color: #000;
+    background-color: #202020;
     color: white;
     text-transform: uppercase;
     text-align: center;
 }
+

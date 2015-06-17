@@ -1,17 +1,17 @@
 <ion-view view-title="Empties Deliveries">
-    <ion-nav-bar class="bar bar-header lightbg darkfont">
+    <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
   <ion-content>
-     <div class="list" ng-repeat = "delivery in deliveries">
+     <div class="list" ng-repeat="delivery in deliveries"><!---->
 
      <div class="item item-divider">
-         <label class="col col-60 labelz" align="center">
-             <h2>{{delivery.customer_id.establishment_name}}</h2>
+         <label class="labelz uppercase" align="center">
+             <h2 class="title">{{delivery.customer_id.establishment_name}}</h2>
           </label>
-          <div class="col col-40" align="center">
-              <a class="button icon-left ion-search" ng-hide="delivery.returns_id !== null" href="#/app/empties/view/{{delivery.id}}">
+          <div align="center">
+              <a class="button button-large button-flat icon-left ion-search" ng-hide="delivery.returns_id !== null" href="#/app/empties/view/{{delivery.id}}">
               VIEW
               </a>
                </div>

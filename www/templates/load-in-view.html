@@ -1,5 +1,5 @@
 <ion-view view-title="Load In View">
- <ion-nav-bar class="bar bar-header lightbg darkfont">
+ <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
@@ -10,43 +10,62 @@
             </div>-->
       
           <form name="loadInViewForm" ng-submit="addLoadIn(loadIn)" novalidate>
-            <div class="list list-inset">
-             <label class="item item-input">Product:</label>
 
-            <div class="input-label">
+            <div class="list list-inset">
+
+             <label class="item item-input item-select">
+
+                <div class="col uppercase">Product:</div>
+
+              <div class="input-label col">
                 <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product);getProdDate(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
                 </select>
-            </div>
+              </div>
 
-              <label class="item item-input">Line:</label>
+              </label>
+              <br>
 
-            <div class="input-label" ng-hide="noBays">
+              <label class="item item-input item-select">
+
+                <div class="col uppercase">Line:</div>
+
+              <div class="input-label col" ng-hide="noBays">
                 <select class = "form-control" ng-model="loadIn.bay" ng-options="bay as bayName(bay) for bay in bays" required>
                 </select>
-            </div>
+              </div>
 
-            <div ng-show="noBays" class="col col-40">
+              </label>
+
+              <div ng-show="noBays" class="input-label col uppercase">
+
                 No Line Available
-            </div>
 
-            &nbsp;
+              </div>
 
-            <label class="item item-input">Returns Cases:</label>
+              &nbsp;
 
-            <div class="input-label">
-             <input class="form-control" type="number" ng-model="loadIn.returns" required>
-            </div>
-          
+              <label class="item item-input">
 
-          
-            <label class="item item-input">Production Date:</label>
+                <div class="col uppercase">Returns Cases:</div>
 
-            <div class="input-label">
-               <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
-            </div>
-      
-          <div class="col col-40" align="center">
-              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button icon-left ion-plus">
+                <div class="input-label col">
+                  <input class="form-control" type="number" ng-model="loadIn.returns" required>
+                </div>
+
+              </label>
+
+              <label class="item item-input">
+
+                <div class="col uppercase">Production Date:</div>
+
+                <div class="input-label col">
+                  <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
+                </div>
+
+              </label>
+
+              <div class="col col-40" align="center">
+              <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-large button-flat icon-left ion-plus">
               ADD
               </button>
           </div>
@@ -68,7 +87,7 @@
               <th>Bay</th>
               <th>Returns</th>
               <th>Prod. Date</th>
-              <th></th>
+              <th>Delete</th>
             </thead>
             <tbody>
               <tr ng-repeat="loadIn in loadIns">
@@ -76,7 +95,7 @@
                 <td>Bay {{loadIn.bay.bay_name}}</td>
                 <td>{{loadIn.cases}}</td>
                 <td>{{loadIn.prod_date}}</td>
-                <td><button ng-click="deleteLoadIn($index,loadIn)">Delete</button></td>
+                <td><button ng-click="deleteLoadIn($index,loadIn)" class="button button-small button-flat icon ion-trash-a"></button></td>
               </tr>
             </tbody>
           </table>
@@ -85,8 +104,8 @@
           &nbsp;
 
          <div ng-show="loadIns.length !== 0" class="col col-40" align="center">
-              <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button icon-left ion-checkmark" style="">
-
+              <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button button-large button-flat icon-left ion-checkmark">
+                &nbsp;
               CONFIRM
               </button>
            </div> 

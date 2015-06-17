@@ -1,56 +1,78 @@
-
 <ion-view view-title="Empties View">
- <ion-nav-bar class="bar bar-header lightbg darkfont">
+ <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
   <ion-content>
 
-     <div class="card">
+  <div ng-show="deliveries.length !== 0">
 
-       <div ng-show="deliveries.length !== 0">
+     <div class="card space">
+
         <form name="ReturnViewForm" ng-submit="addReturns(returns)" novalidate>
 
-          <label class="item item-input">SKU Name: {{delivery.sku_id.prod_id.brand_name}} {{delivery.sku_id.sku_name}} {{delivery.sku_id.size}}
-          </label>
+          <label class="item item-input item-select">
 
-          <div class="input-label">
+            <div class="col">SKU Name:
+
+            {{delivery.sku_id.prod_id.brand_name}} {{delivery.sku_id.sku_name}} {{delivery.sku_id.size}}</div>
+          
+
+          <div class="input-label col">
              <select  class="form-control" ng-model="returns.sku" ng-options="sku as combined(sku) for sku in deliveries">
              </select>
           </div>
+
+          </label>
+
+          &nbsp;
           
 
-          <label class="item item-input">Bottles:</label>
+          <label class="item item-input">
 
-            <div class="input-label">
+            <div class="col">Bottles:</div>
+
+            <div class="input-label col">
              <input class="form-control" type="number" ng-model="returns.bottles" required>
             </div>
-          <label class="item item-input">Cases:</label>
 
-            <div class="input-label">
+            </label>
+
+
+          <label class="item item-input">
+
+            <div class="col">Cases:</div>
+
+            <div class="input-label col">
              <input class="form-control" type="number" ng-model="returns.cases" required>
             </div>
+
+            </label>
         
 
-          <label class="item item-input">Deposit:</label>
+          <label class="item item-input">
 
-            <div class="input-label">
+            <div class="col">Deposit:</div>
+
+            <div class="input-label col">
              <input class="form-control" type="number" ng-model="returns.deposit" required>
             </div>
+
+            </label>
 
 
 
           <div class="col col-40" align="center">
-              <button type="submit" ng-disabled="ReturnViewForm.$invalid" class="button icon-left ion-checkmark">
+              <button type="submit" ng-disabled="ReturnViewForm.$invalid" class="button button-large button-flat icon-left ion-plus">
               ADD
               </button>
           </div>
 
         </form>
         </div>
-    
-         
-      </div>
+
+
+       <div class="card space" align="center">
 
         <table class="table">
             <thead>
@@ -58,7 +80,7 @@
               <th>Bottles</th>
               <th>Cases</th>
               <th>Deposit</th>
-              <th></th>
+              <th>Delete</th>
             </thead>
             <tbody>
               <tr ng-repeat="returns in returnsList">
@@ -66,14 +88,24 @@
                 <td>{{returns.bottles}}</td>
                 <td>{{returns.cases}}</td>
                 <td>{{returns.deposit}}</td>
-                <td><button ng-click="deleteReturns($index,returns)">Delete</button></td>
+                <td><button ng-click="deleteReturns($index,returns)" class="button button-small button-flat icon ion-trash-a"></button></td>
               </tr>
             </tbody>
           </table>
 
-          <div <div ng-hide="deliveries.length !== 0">
-            <button ng-click="submit()">SUBMIT</button>
+          &nbsp;
+          &nbsp;
+
+          <div>
+            <div ng-hide="deliveries.length !== 0">
+            <button ng-click="submit()" class="button button-large button-flat icon-left ion-checkmark">SUBMIT</button>
           </div>
+
+
+        </div>
+
+</div>
+
 
   </ion-content>
 </ion-view>

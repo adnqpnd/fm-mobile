@@ -1,21 +1,25 @@
 <ion-view view-title="Tally View">
- <ion-nav-bar class="bar bar-header lightbg darkfont">
+ <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
   <ion-content>
 
-        <div class="card" ng-repeat="product in currentLoadOut">
+        <div class="card" ng-repeat="product in currentLoadOut"><!---->
 
           <div class="list list-inset">
 
-            <label class="item item-input"> {{product.sku.prod_id.brand_name}} {{product.sku.sku_name}} {{product.sku.size}} </label>
+            <label class="item item-input uppercase">&nbsp; {{product.sku.prod_id.brand_name}} {{product.sku.sku_name}} {{product.sku.size}}</label>
             <br>
-            <label class="item item-input">Cases:</label>
+            <label class="item item-input uppercase">
 
-            <div class="input-label">
+              <div class="col">Cases:</div>
+
+            <div class="input-label col">
              <input class="form-control" type="number" value="{{product.cases}}"  disabled>
             </div>
+
+            </label>
 
             <br><br>
          

@@ -1,5 +1,5 @@
 <ion-view view-title="Tally">
- <ion-nav-bar class="bar bar-header lightbg darkfont">
+ <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -7,20 +7,20 @@
     </ion-nav-bar>
   <ion-content>
     
-     <div class="card" ng-repeat="loadOut in loadOuts">
+     <div class="card tally" ng-repeat="loadOut in loadOuts"><!--  -->
 
-           <div class="bar bar-header bar-royal">
-
-            <h1 class="title"><i class="icon ion-document"></i>&nbsp;&nbsp;Load Out #{{loadOut.loadout_number}}</h1>
-
-          </div><br><br>
+          <div class="col col-40" align="center">
+            <label class="uppercase">
+              <h2 class="title">LOAD OUT NO. {{loadOut.loadout_number}}</h2>
+            </label>
+          </div>
 
            <div class="col col-40" align="center">
-              <a class="button icon-left ion-search" href="#/app/tally/{{loadOut.id}}">
+              <a class="button button-large button-flat icon-left ion-search" href="#/app/tally/{{loadOut.id}}">
               VIEW
               </a>
 
-               <button  ng-hide="loadOut.status !== 'Pending'" class="button icon-left ion-checkmark" ng-click="confirmLoadout(loadOut)">
+               <button  ng-hide="loadOut.status !== 'Pending'" class="button button-large button-flat icon-left ion-checkmark" ng-click="confirmLoadout(loadOut)">
                CONFIRM
                </button>
                </div>

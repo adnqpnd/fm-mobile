@@ -1,96 +1,119 @@
 <ion-view view-title="Edit Account">
+ <ion-nav-bar class="bar bar-header bar-dark uppercase lightfont">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
   <ion-content>
-        <div class="card">
 
-          <div class="bar bar-header bar-royal">
-            <h1 class="title"><i class="icon ion-edit"></i>&nbsp;&nbsp;Edit Account Information</h1>
+  <div class="card space">
 
-          </div>
+    <div class="list list-inset">
 
-      <!-- username --><br><br><br>
+      <h3 class="title" align="center"><i class="icon ion-edit"></i>&nbsp;&nbsp;EDIT ACCOUNT INFORMATION</h3>
+
+
+      <!-- username -->
       <div class="itemedit item-text-wrap">
 
         <div class="list row" ng-hide="editForm === 1">
-        <label class = "col col-20">Username:</label
+
+
+        <label class = "item item-input uppercase col">
+
+          Username:</label
             > 
-        <div class="col col-60">
+        <div class="input-label col col-50 wf">
             {{user.username}}
          </div>
        
-            <button class="button button-small button-edit" ng-click="showEditForm(1)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+            <button class="button button-small button-edit uppercase" ng-click="showEditForm(1)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
       
         </div>
 
         <div class="list row" ng-show="editForm === 1">
-       <label class = "col col-20"> Username:</label> 
+       <label class = "item item-input uppercase col">
 
-        <div class="col col-60">
+        Username:</label> 
+
+        <div class="input-label col col-50">
             <input class="form-control" type="text" ng-model="userEdit.username" value="{{user.username}}">
         </div>
 
-        <button class="button button-small button-clear" ng-click="editUser(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
-        <button class="button button-small button-clear" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
+        <button class="button button-small button-clear uppercase" ng-click="editUser(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-clear uppercase" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
     
     <!-- first name -->
     <div class=" list row" ng-hide="editForm === 3">
-        <label class = "col col-20">First Name:</label> 
+        <label class = " item item-input uppercase col">
 
-         <div class="col col-60">
+          First Name:</label> 
+
+         <div class="input-label col col-50 wf">
             {{user.firstname}}
         </div>
 
-        <button class="button button-small button-edit" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+        <button class="button button-small button-edit uppercase" ng-click="showEditForm(3)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
     <div class="list row" ng-show="editForm === 3">
-        <label class = "col col-20">First Name: </label>
+        <label class = "item item-input uppercase col">
 
-         <div class="col col-60">
+          First Name: </label>
+
+         <div class="input-label col col-50 col-50">
             <input class="form-control" type="text"  ng-model="userEdit.firstname" value="{{user.firstname}}">
         </div>
 
-        <button class="button button-small button-clear" ng-click="editFirstname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
-        <button class="button button-small button-clear" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
+        <button class="button button-small button-clear uppercase" ng-click="editFirstname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-clear uppercase" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
 
     <!-- last name -->
     <div class=" list row" ng-hide="editForm === 4">
-        <label class = "col col-20"> Last Name:</label> 
+        <label class = "item item-input uppercase col">
 
-         <div class="col col-60">
+          Last Name:</label> 
+
+         <div class="input-label col col-50 wf">
             {{user.lastname}}
         </div>
 
-        <button class="button button-small button-edit" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
+        <button class="button button-small button-edit uppercase" ng-click="showEditForm(4)"><i class="icon ion-edit"></i>&nbsp; Edit</button>
     </div>
 
     <div class=" list row" ng-show="editForm === 4">
-        <label class = "col col-20">Last Name: </label>
+        <label class = "item item-input uppercase col">
 
-         <div class="col col-60">
+          Last Name: </label>
+
+         <div class="input-label col col-50">
             <input  class="form-control" type="text" ng-model="userEdit.lastname" value="{{user.lastname}}">
         </div>
 
-        <button class="button button-small button-clear" ng-click="editLastname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
-        <button class="button button-small button-clear" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
+        <button class="button button-small button-clear uppercase" ng-click="editLastname(userEdit)"><i class="icon ion-checkmark"></i>&nbsp; Save</button>&nbsp;
+        <button class="button button-small button-clear uppercase" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
     </div>
 
     <!-- password -->
     <div class="row" ng-hide="editForm === 2">
-        <label class = "col col-20">Password: </label>
+        <label class = "item item-input uppercase col">
 
-        <div class="col col-1 col-offset-69">
+          Password: </label>
+
+        <div class="col">
         </div>
 
 
-              <button class="button button-small button-edit" ng-click="showEditForm(2)"><i class="icon ion-edit"></i>&nbsp; <EM></EM>Edit</button>
+              <button class="button button-small button-edit uppercase" ng-click="showEditForm(2)"><i class="icon ion-edit"></i>&nbsp; <EM></EM>Edit</button>
     
       
     </div>
 
     <div ng-show="editForm === 2">
-         <label class = "col col-20">Password: </label>
+         <label class = "col">Password: </label>
         <form name="passwordForm" ng-submit="changePassword(password)" novalidate>
 
              <div class="alert alert-dismissable alert-danger" ng-show="errorMessage">
@@ -100,41 +123,46 @@
 
              <br>
 
-            <div class="row">
-                <label align="right"  class = "col col-20">Current:</label> 
+            <div class="row col-50">
+                <label align="right"  class = "col">Current:</label> 
 
-                 <div class="col col-50">
+                 <div class="col">
                     <input class="form-control"  type="password" ng-model="password.old_password" required> 
                 </div>
             </div>
 
-            <div class="row">
-                <label align="right" class = "col col-20">New:</label>
-                <div  class="col col-50">
+            <div class="row col-50">
+                <label align="right" class = "col">New:</label>
+                <div  class="col">
                     <input class="form-control"  type="password" ng-model="password.new_password" required>
                 </div>
                  
              </div>
 
-            <div class="row">
-                <label align="right" class = "col col-20 col-">Retype New:</label> 
+            <div class="row col-50">
+                <label align="right" class = "col">Retype New:</label> 
 
-                <div  class="col col-50">
+                <div  class="col">
                 <input class="form-control"  type="password" ng-model="password.confNew_password" required>
-            </div>
+
+                <br><br>
+
+            <button class="button button-small button-clear uppercase" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password"><i class="icon ion-checkmark"></i>&nbsp; Change Password</button>
+
+            <button class="button button-small button-clear uppercase" type="button" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
+
             </div>
 
-            <div align="center"> 
-                 
-            <button class="button button-small button-clear" type="submit" ng-disabled="passwordForm.$invalid || password.new_password !== password.confNew_password">Change Password</button>
-
-            <button class="button button-small button-clear" type="button" ng-click="showEditForm(0)"><i class="icon ion-close"></i>&nbsp; Cancel</button>
-            </div>
+             </div>
 
         </form>
     </div>
       </div>
     </div>
+
+</div>
+
+
 
   </ion-content>
 </ion-view>
