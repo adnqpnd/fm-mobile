@@ -256,8 +256,42 @@ input:hover {
   background-color: #fff !important;
 }
 
+.item-select {
+  color: #fff;
+  background-color: transparent;
+}
+
+
+/*
 .input-label {
   padding-top: 15px !important;
+}
+
+label, input, button, select, textarea {
+  font-size: 20px;
+  line-height: auto !important;
+   background-color: blue;
+}
+*/
+
+.input-label {
+  padding: 10px 10px 10px 10px;
+  max-width: 300px !important;
+  color: #000 !important;
+  font-size: 12px !important; 
+  line-height: 2 !important;
+  background-color: transparent;
+  min-height: 10px;
+}
+
+.il {
+  padding: 10px 10px 10px 10px;
+  max-width: 300px !important;
+  color: #000 !important;
+  font-size: 12px !important; 
+  line-height: 2 !important;
+  background-color: #fff !important;
+  min-height: 10px;
 }
 
 .wf {

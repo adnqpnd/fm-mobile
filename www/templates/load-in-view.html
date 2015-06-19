@@ -36,7 +36,7 @@
 
               </label>
 
-              <div ng-show="noBays" class="input-label col uppercase">
+              <div ng-show="noBays" class="input-label col il uppercase">
 
                 No Line Available
 
@@ -48,7 +48,7 @@
 
                 <div class="col uppercase">Returns Cases:</div>
 
-                <div class="input-label col">
+                <div class="input-label il col">
                   <input class="form-control" type="number" ng-model="loadIn.returns" required>
                 </div>
 
@@ -58,11 +58,13 @@
 
                 <div class="col uppercase">Production Date:</div>
 
-                <div class="input-label col">
+                <div class="input-label il col">
                   <input class ="form-control" type="date" ng-model="loadIn.prodDate" required>
                 </div>
 
               </label>
+
+              <br><br>
 
               <div class="col col-40" align="center">
               <button type="submit" ng-disabled="loadInViewForm.$invalid" class="button button-large button-flat icon-left ion-plus">
@@ -100,8 +102,7 @@
             </tbody>
           </table>
 
-          &nbsp;
-          &nbsp;
+          <br><br>
 
          <div ng-show="loadIns.length !== 0" class="col col-40" align="center">
               <button ng-click="confirm()" ng-disabled="loadIns.lenght === 0" class="button button-large button-flat icon-left ion-checkmark">
