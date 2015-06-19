@@ -9,6 +9,10 @@ angular.module('FMApp.controllers')
   $scope.formatToday =  $scope.formatDate($scope.today);
   console.log($scope.formatToday);
 
+  $scope.errorMessage ='';
+  $scope.hasError = false;
+  
+
   var getLoadOuts = function () {
     $http.get(httpHost + '/load-out/list?date=' + $scope.formatToday + '&truck=' + $scope.trucks.id).success( function (data) {
       $scope.loadOuts = data;
@@ -39,6 +43,13 @@ angular.module('FMApp.controllers')
     });
   };
 
+  $scope.showErrorMessage = function (data,message) {
+    $scope.hasError = data;
+    if(data === true){
+      $scope.errorMessage = message;
+    }
+  }
+
   $scope.confirmLoadout =  function(loadOut) {
     var loadOutInfo = {
       "loadout_id": loadOut.id,
@@ -52,6 +63,11 @@ angular.module('FMApp.controllers')
       console.log('Sails responded with post bay: ', body);
       console.log('and with status code: ', JWR.statusCode);
       if(JWR.statusCode === 200){
+        //$scope.snackbarShow('Confirmed');
+         $scope.showErrorMessage(true,status.message);
+      } else if (JWR.statusCode === 400){
+        console.log("Error Occured");
+        $scope.showErrorMessage(true,body.message);
       }
     }); 
   };

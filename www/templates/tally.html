@@ -6,10 +6,17 @@
       </ion-nav-buttons>
     </ion-nav-bar>
   <ion-content>
+
+    <!-- error msg -->
+    <div ng-show="errorMessage" class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" ng-click="showErrorMessage(false)">×</button>
+        <strong>{{errorMessage}}</strong>
+    </div>
     
      <div class="card tally" ng-repeat="loadOut in loadOuts"><!--  -->
 
-          <div align="center">
+          <div align="center">  
+
             <label class="uppercase">
               <h2 class="title">LOAD OUT NO. {{loadOut.loadout_number}}</h2>
             </label>
@@ -26,6 +33,8 @@
            </div>
 
       </div>
+
+      <div class="snackbar-container" data-snackbar="true"></div>
 
   </ion-content>
 </ion-view>

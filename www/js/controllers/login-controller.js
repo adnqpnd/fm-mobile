@@ -2,15 +2,14 @@
 
 angular.module('FMApp.controllers')
 .controller('LoginCtrl',['$scope','$http','$state','authService','userService',function($scope,$http,$state,authService,userService){
-  $scope.error ='';
-  $scope.errorMessage = false;
+  $scope.errorMessage ='';
+  $scope.hasError = false;
   
   $scope.showErrorMessage = function (data,message) {
+    $scope.hasError = data;
     if(data === true){
-      $scope.error = message;
+      $scope.errorMessage = message;
     }
-
-    $scope.errorMessage = data;
   };
 
   $scope.logIn = function (guestData) {
