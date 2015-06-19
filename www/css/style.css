@@ -266,13 +266,14 @@ input:hover {
 .input-label {
   padding-top: 15px !important;
 }
-
-label, input, button, select, textarea {
-  font-size: 20px;
-  line-height: auto !important;
-   background-color: blue;
-}
 */
+
+select {
+  font-size: 21px;
+  line-height: auto !important;
+   background-color: white;
+   border: 0px !important;
+}
 
 .input-label {
   padding: 10px 10px 10px 10px;
