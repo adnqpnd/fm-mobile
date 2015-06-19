@@ -7,17 +7,17 @@
   
   <br>
   <center>
-    <img src="../../img/fmlogo.png" class="responsiveimg" align="center">
+    <!--<img src="../../img/fmlogo.png" class="responsiveimg" align="center">-->
   </center>
 
 <form name="loginForm" ng-submit="logIn(guest)" novalidate>
 
   <div class="list login">
 
-  <div ng-show="errorMessage" class="alert alert-dismissable alert-danger">
-    <button type="button" class="close" ng-click="showErrorMessage(false)">×</button>
-        <strong>{{errorMessage}}</strong>
-   </div> 
+  <div class="errmsg" ng-show="errorMessage" align="center"><!---->
+        <strong>{{errorMessage}}!</strong>
+        <button type="button" ng-click="showErrorMessage(false)" class="button button-small x icon ion-close-round"></button><!-- -->
+  </div><br>
 
   <label class="item item-input">
     <span class="input-label uppercase">Username</span>

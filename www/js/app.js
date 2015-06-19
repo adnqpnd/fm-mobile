@@ -20,7 +20,7 @@ angular.module('FMApp', ['ionic','FMApp.controllers','FMApp.services','FMApp.fil
   });
 })
 
-.constant('httpHost','http://192.168.43.224:1337')
+.constant('httpHost','http://localhost:1337')
 .constant('_', window._)
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   $ionicConfigProvider.views.maxCache(0);
