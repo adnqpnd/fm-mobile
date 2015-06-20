@@ -11,6 +11,11 @@
       
           <form name="loadInViewForm" ng-submit="addLoadIn(loadIn)" novalidate>
 
+            <div ng-show="hasError" class="alert alert-dismissable alert-danger">
+              <button type="button" class="close" ng-click="showErrorMessage(false)">×</button>
+                <strong>{{errorMessage}}</strong>
+            </div>
+
             <div class="list list-inset">
 
              <label class="item item-input">

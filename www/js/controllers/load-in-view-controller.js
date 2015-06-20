@@ -14,6 +14,15 @@ angular.module('FMApp.controllers')
   $scope.totalAmount = 0;
   $scope.returnMax = 0;
   
+  $scope.errorMessage ='';
+  $scope.hasError = false;
+  
+  $scope.showErrorMessage = function (data,message) {
+    $scope.hasError = data;
+    if(data === true){
+      $scope.errorMessage = message;
+    }
+  };
 
   var getLoadOuts = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
@@ -191,6 +200,7 @@ angular.module('FMApp.controllers')
           // $scope.loadIns = [];
           // $scope.loadIn.product = $scope.loadOuts[0];
           // $scope.loadIn.bay = $scope.bays[0].id;
+        $scope.showErrorMessage(true,body.message);
         $scope.$digest();
       }
     }); 

@@ -4,6 +4,11 @@
       </ion-nav-back-button>
   </ion-nav-bar>
   <ion-content>
+
+    <div ng-show="hasError" class="errmsg">
+      <button type="button" class="button button-small x icon ion-close-round" ng-click="showErrorMessage(false)">×</button>
+        <strong>{{errorMessage}}</strong>
+    </div>
     
      <div class="list card loadin" ng-repeat="delivery in deliveries"><!-- -->
 
