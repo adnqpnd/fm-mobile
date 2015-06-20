@@ -20,6 +20,9 @@ angular.module('FMApp.services', [])
       return $http.get(httpHost + '/users/' + userID).success(function (data) {
          user = data;
          console.log(user);
+         if(user.type){
+           userAccess = 1;
+         }
          return data;
       });
     },

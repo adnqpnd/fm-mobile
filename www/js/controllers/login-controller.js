@@ -4,6 +4,17 @@ angular.module('FMApp.controllers')
 .controller('LoginCtrl',['$scope','$http','$state','authService','userService',function($scope,$http,$state,authService,userService){
   $scope.errorMessage ='';
   $scope.hasError = false;
+
+  if (authService.getToken() != null) {
+     console.log("Have token");
+     userService.getUser().then(function(){
+       $state.go('app.tally');
+     },function(err){
+       if(err.status === 403){
+         authService.logout();
+       }
+     });
+  }
   
   $scope.showErrorMessage = function (data,message) {
     $scope.hasError = data;
