@@ -12,6 +12,8 @@ angular.module('FMApp.controllers')
   $scope.maxCases = 0;
   $scope.maxBots = 0;
   $scope.ifMax = false;
+  $scope.returns.bottles = 0;
+  $scope.returns.cases = 0;
   
   var getDeliverySelected = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
@@ -57,6 +59,7 @@ angular.module('FMApp.controllers')
   };
 
   $scope.getDeposit = function(sku){
+    $scope.ifMaxCase();
     console.log("SKU");
     console.log(sku);
     var bottles = sku.sku_id.bottlespercase;
@@ -74,13 +77,18 @@ angular.module('FMApp.controllers')
     console.log(sku);
     $scope.maxCases = sku.cases;
     $scope.maxBots = (sku.sku_id.bottlespercase-1);
+    console.log($scope.maxCases);
+    console.log($scope.maxBots);
   };
 
   $scope.ifMaxCase = function (){
     if($scope.returns.cases == $scope.maxCases){
       $scope.ifMax =  true;
+      $scope.returns.bottles = 0;
+      //$scope.returns.deposit = ((cases*bottles)*priceperempty) - ((($scope.returns.cases * bottles)+ $scope.returns.bottles)*priceperempty);
     }else{
       $scope.ifMax =  false;
+      //$scope.returns.bottles =0;
     }
   };
 

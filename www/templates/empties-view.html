@@ -33,7 +33,7 @@
             <div class="col">Returned Extra Cases:</div>
 
             <div class="input-label il col">
-             <input class="form-control" type="number" ng-change="getDeposit(returns.sku);ifMaxCase()" max="{{maxCases}}" ng-model="returns.cases" required>
+             <input class="form-control" type="number" ng-change="getDeposit(returns.sku)" max="{{maxCases}}" ng-model="returns.cases" required>
             </div>
 
             </label>
@@ -44,7 +44,7 @@
             <div class="col">Returned Extra Bottles:</div>
 
             <div class="input-label il col">
-             <input class="form-control" type="number" ng-change="getDeposit(returns.sku)" ng-disabled="ifMax" max="{{maxBottles}}" ng-model="returns.bottles" required>
+             <input class="form-control" type="number" ng-change="getDeposit(returns.sku)" ng-disabled="ifMax" max="{{maxBots}}" ng-model="returns.bottles" required>
             </div>
 
             </label>
@@ -55,7 +55,7 @@
             <div class="col">Deposit:</div>
 
             <div class="input-label il col">
-             <input class="form-control" type="number" ng-model="returns.deposit" required>
+             <input class="form-control" type="number" ng-model="returns.deposit" disabled required>
             </div>
 
             </label>
