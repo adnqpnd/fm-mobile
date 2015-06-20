@@ -18,7 +18,7 @@
                 <div class="col uppercase">Product:</div>
 
               <div class="input-label col">
-                <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product);getProdDate(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
+                <select class = "form-control" ng-model="loadIn.product" ng-change="getBays(loadIn.product);getProdDate(loadIn.product);getMax(loadIn.product)" ng-options="loadOut as prodName(loadOut.sku_id) for loadOut in deliveries[0].products" required>
                 </select>
               </div>
 
@@ -49,7 +49,7 @@
                 <div class="col uppercase">Returns Cases:</div>
 
                 <div class="input-label il col">
-                  <input class="form-control" type="number" ng-model="loadIn.returns" required>
+                  <input class="form-control" type="number" max="{{returnMax}}" ng-model="loadIn.returns" required>
                 </div>
 
               </label>

@@ -12,18 +12,27 @@ angular.module('FMApp.controllers')
   $scope.loadIns = [];
   $scope.noBays = false;
   $scope.totalAmount = 0;
+  $scope.returnMax = 0;
   
 
   var getLoadOuts = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
       $scope.deliveries = data;
+      console.log($scope.deliveries);
       $scope.loadIn.product = $scope.deliveries[0].products[0];
       $scope.getBays($scope.loadIn.product);
       customerID = $scope.deliveries[0].customer_id.id;
       $scope.getProdDate($scope.loadIn.product);
+      $scope.getMax($scope.loadIn.product);
     }).error(function (err) {
       console.log(err);
     });
+  };
+
+  $scope.getMax = function(sku){
+    console.log("SKUUUU");
+    console.log(sku.cases);
+    $scope.returnMax = sku.cases;
   };
 
   $scope.getProdDate = function (prod) {
@@ -90,7 +99,7 @@ angular.module('FMApp.controllers')
    };
 
    $scope.prodName = function (sku) {
-     return sku.prod_id.brand_name +" "+ sku.sku_name;
+     return sku.prod_id.brand_name +" "+ sku.sku_name +" "+sku.size;
    };
 
    $scope.addLoadIn = function (loadIn){

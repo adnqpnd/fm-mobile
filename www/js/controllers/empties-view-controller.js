@@ -9,12 +9,17 @@ angular.module('FMApp.controllers')
   $scope.returnsList = [];
   $scope.totalDeposit = 0;
   var deliveryID = $stateParams.deliveryID;
+  $scope.maxCases = 0;
+  $scope.maxBots = 0;
+  $scope.ifMax = false;
   
   var getDeliverySelected = function () {
     $http.get(httpHost + "/delivery/list?id="+ deliveryID).success( function (data) {
       $scope.deliveries = $scope.sortData(data[0].products,'sku_id.sku_name');
       $scope.returns.sku = $scope.deliveries[0];
         console.log("Delivery Transaction Selected:");
+        $scope.getDeposit($scope.returns.sku);
+        $scope.getMaxes($scope.returns.sku);
         console.log($scope.deliveries);
         console.log(deliveryID);
     }).error(function (err) {
@@ -49,6 +54,34 @@ angular.module('FMApp.controllers')
     
     clearForm();
 
+  };
+
+  $scope.getDeposit = function(sku){
+    console.log("SKU");
+    console.log(sku);
+    var bottles = sku.sku_id.bottlespercase;
+    var cases = sku.cases;
+    var priceperempty = sku.sku_id.priceperempty;
+    console.log(bottles);
+    console.log(cases);
+    console.log(priceperempty);
+    console.log($scope.returns.bottles);
+    $scope.returns.deposit = ((cases*bottles)*priceperempty) - ((($scope.returns.cases * bottles)+ $scope.returns.bottles)*priceperempty);
+  };
+
+  $scope.getMaxes = function(sku){
+    console.log("MAX SKUU");
+    console.log(sku);
+    $scope.maxCases = sku.cases;
+    $scope.maxBots = (sku.sku_id.bottlespercase-1);
+  };
+
+  $scope.ifMaxCase = function (){
+    if($scope.returns.cases == $scope.maxCases){
+      $scope.ifMax =  true;
+    }else{
+      $scope.ifMax =  false;
+    }
   };
 
   $scope.deleteReturns = function (index,returns) {

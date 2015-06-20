@@ -19,32 +19,32 @@
           
 
           <div class="input-label col">
-             <select  class="form-control" ng-model="returns.sku" ng-options="sku as combined(sku) for sku in deliveries">
+             <select  class="form-control" ng-model="returns.sku" ng-change="getDeposit(returns.sku);getMaxes(returns.sku)" ng-options="sku as combined(sku) for sku in deliveries">
              </select>
           </div>
 
           </label>
 
           &nbsp;
+
+          
+          <label class="item item-input">
+
+            <div class="col">Returned Extra Cases:</div>
+
+            <div class="input-label il col">
+             <input class="form-control" type="number" ng-change="getDeposit(returns.sku);ifMaxCase()" max="{{maxCases}}" ng-model="returns.cases" required>
+            </div>
+
+            </label>
           
 
           <label class="item item-input">
 
-            <div class="col">Bottles:</div>
+            <div class="col">Returned Extra Bottles:</div>
 
             <div class="input-label il col">
-             <input class="form-control" type="number" ng-model="returns.bottles" required>
-            </div>
-
-            </label>
-
-
-          <label class="item item-input">
-
-            <div class="col">Cases:</div>
-
-            <div class="input-label il col">
-             <input class="form-control" type="number" ng-model="returns.cases" required>
+             <input class="form-control" type="number" ng-change="getDeposit(returns.sku)" ng-disabled="ifMax" max="{{maxBottles}}" ng-model="returns.bottles" required>
             </div>
 
             </label>
