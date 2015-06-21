@@ -329,7 +329,7 @@ select {
 }
 
 .pane      {
-  background-image: url("../../img/fmbg.png") !important;
+  background-image: url("../img/fmbg.png") !important;
   background-color: #a5dde4;
   background-position: bottom center;
   background-repeat: no-repeat;
