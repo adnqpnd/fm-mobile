@@ -6,15 +6,15 @@ angular.module('FMApp.controllers')
   $scope.loadOuts = [];
   $scope.trucks = [];
   $scope.today = new Date();
-  $scope.formatToday =  $scope.formatDate($scope.today);
+  $scope.tallyDate = $scope.today;
   console.log($scope.formatToday);
 
   $scope.errorMessage ='';
   $scope.hasError = false;
   
 
-  var getLoadOuts = function () {
-    $http.get(httpHost + '/load-out/list?date=' + $scope.formatToday + '&truck=' + $scope.trucks.id).success( function (data) {
+  var getLoadOuts = function (date) {
+    $http.get(httpHost + '/load-out/list?date=' + $scope.formatDate(date) + '&truck=' + $scope.trucks.id).success( function (data) {
       $scope.loadOuts = data;
       console.log("Load Out:");
       console.log($scope.loadOuts);
@@ -75,8 +75,12 @@ angular.module('FMApp.controllers')
 
 
   getTrucks().success(function(){
-    getLoadOuts();
+    getLoadOuts($scope.today);
   });
+
+  $scope.changeDate = function (date) {
+    getLoadOuts(date);
+  }
 
   $scope.truckName = function (truck) {
     console.log(truck);
